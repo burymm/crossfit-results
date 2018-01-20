@@ -1,7 +1,7 @@
 CREATE USER admin@localhost identified BY 'admin';
-GRANT usage ON *.* TO userA@localhost identified BY 'admin';
+GRANT usage ON *.* TO admin@localhost identified BY 'admin';
 CREATE DATABASE IF NOT EXISTS crossfitDB;
-GRANT ALL privileges ON crossfitDB.* TO userA@localhost;
+GRANT ALL privileges ON crossfitDB.* TO admin@localhost;
 FLUSH PRIVILEGES;
 USE crossfitDB;
 
