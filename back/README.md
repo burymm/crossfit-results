@@ -1,4 +1,4 @@
-# RESRful webservice
+# RESTful webservice
 
 ## Install MySQL server
 
