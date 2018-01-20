@@ -27,18 +27,18 @@ ________________________________________________________________________________
 
 ## Install JDK
 
-1. Download and install [JDK-1.8] (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+1. Download and install [JDK-1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
    help for install for windows <https://docs.oracle.com/javase/8/docs/technotes/guides/install/windows_jdk_install.html>
       
 2. Set system path windows <https://java.com/en/download/help/path.xml>
 
 ## Install glassfish (and install mysql connector java)
 
-1. Download and install [GlassFish 5.0 - Full Platform] (https://javaee.github.io/glassfish/download)
+1. Download and install [GlassFish 5.0 - Full Platform](https://javaee.github.io/glassfish/download)
 
 2. Extract Glassfish to a folder on your hard  (for exemple C:\programmfiles\glassfish-5)
 
-3. Download [mysql connector java 5.1.45]  (https://dev.mysql.com/downloads/connector/j/5.1.html)
+3. Download [mysql connector java 5.1.45](https://dev.mysql.com/downloads/connector/j/5.1.html)
    
 4. Extract Glassfish to a folder on your hard and copy file C:\temp\mysql-connector-java-5.1.45\mysql-connector-java-5.1.45-     bin.jar    into   C:\programmfiles\glassfish-5\glassfish\domains\domain1\lib
 
