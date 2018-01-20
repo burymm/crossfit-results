@@ -5,7 +5,6 @@ GRANT ALL privileges ON crossfitDB.* TO admin@localhost;
 FLUSH PRIVILEGES;
 USE crossfitDB;
 
-
 DROP TABLE IF EXISTS exercises;
 DROP TABLE IF EXISTS workoutType;
 DROP TABLE IF EXISTS results;
