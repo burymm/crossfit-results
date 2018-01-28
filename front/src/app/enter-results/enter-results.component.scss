@@ -1,0 +1,41 @@
+.header {
+	grid-area: header;
+}
+
+.left {
+	grid-area: left;
+}
+
+.right {
+	grid-area: right;
+}
+
+.main {
+	display:grid;
+	grid-area: main;
+	grid-template-areas: "left right";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	grid-gap: 10px;
+}
+
+.bottom {
+	grid-area: bottom;
+}
+
+.container {
+	display: grid;
+	grid-template-areas: "header"
+						 "main"
+						 "bottom";
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;					 
+}
+
+.white {
+	color: white;
+}
+
+.red {
+	color: #FF5722;
+}
