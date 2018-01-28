@@ -1,9 +1,56 @@
-<p>
-  enter-results works!
-</p>
+<div class="container crossfit-dark-theme">
+
+<div>
+	<mat-toolbar class="header" color="primary">HEADER</mat-toolbar>
+</div>
 
 	
-<input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+	<div class="main">
+	<div class="left">	
+		<div>
+			<p class="white">Choose exercises</p>
+			<mat-form-field>
+  				<mat-select [(value)]="selected">
+   				<mat-option color="primary"><p class="red">None</p></mat-option>
+    			<mat-option value="option1" color="primary"><p class="red">Option 1</p></mat-option>
+    			<mat-option value="option2" color="primary"><p class="red">Option 2</p></mat-option>
+    			<mat-option value="option3" color="primary"><p class="red">Option 3</p></mat-option>
+ 				</mat-select>
+			</mat-form-field>
+		</div>
 
+		<div>
+			<p class="white">Type workout</p>
+			<mat-radio-group>
+	  			<mat-radio-button value="1" color="accent"><p class="white">Full</p></mat-radio-button>
+	  			<mat-radio-button value="2" color="accent"><p class="white">Light</p></mat-radio-button>
+			</mat-radio-group>
+		</div>
+
+
+		<div>
+			<p class="white">Result</p>
+			<mat-form-field color="accent">
+	  			<textarea matInput placeholder="Enter result" matTextareaAutosize matAutosizeMinRows="2"
+	            	matAutosizeMaxRows="5" class="white"></textarea>
+			</mat-form-field>	
+	 	</div>
+	</div>	
+	<div class="right">
+ 		<form class="example-form">
+  			<mat-form-field class="example-full-width"  color="accent">
+    		<textarea matInput placeholder="Leave a comment" class="white"></textarea>
+  			</mat-form-field>
+		</form>
+ 	</div>
+
+
+	</div> <!-- end main -->
+
+ 	
+ 	<div class="bottom">
+ 		<button mat-raised-button color="primary">Save</button>
+ 		<button mat-raised-button color="primary">Cancel</button>
+ 	</div>
+
+</div>
