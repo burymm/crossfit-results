@@ -4,10 +4,16 @@
 	<mat-toolbar class="header" color="primary">HEADER</mat-toolbar>
 </div>
 
-	
+
 	<div class="main">
-	<div class="left">	
+	<div class="left">
 		<div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="exciseDatepicker">
+        <mat-datepicker-toggle matSuffix [for]="exciseDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #exciseDatepicker></mat-datepicker>
+      </mat-form-field>
+
 			<p class="white">Choose exercises</p>
 			<mat-form-field>
   				<mat-select [(value)]="selected">
@@ -33,9 +39,9 @@
 			<mat-form-field color="accent">
 	  			<textarea matInput placeholder="Enter result" matTextareaAutosize matAutosizeMinRows="2"
 	            	matAutosizeMaxRows="5" class="white"></textarea>
-			</mat-form-field>	
+			</mat-form-field>
 	 	</div>
-	</div>	
+	</div>
 	<div class="right">
  		<form class="example-form">
   			<mat-form-field class="example-full-width"  color="accent">
@@ -47,7 +53,7 @@
 
 	</div> <!-- end main -->
 
- 	
+
  	<div class="bottom">
  		<button mat-raised-button color="primary">Save</button>
  		<button mat-raised-button color="primary">Cancel</button>

@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { EnterResultsComponent } from './enter-results/enter-results.component';
+import { MatNativeDateModule } from "@angular/material";
 
 
 
@@ -26,8 +27,9 @@ import { EnterResultsComponent } from './enter-results/enter-results.component';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatNativeDateModule,
     MatDatepickerModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
