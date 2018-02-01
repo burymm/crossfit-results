@@ -7,9 +7,15 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+
+
+
 
 import { AppComponent } from './app.component';
 import { EnterResultsComponent } from './enter-results/enter-results.component';
+import { ViewResultsComponent } from './view-results/view-results.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 
@@ -17,7 +23,8 @@ import { EnterResultsComponent } from './enter-results/enter-results.component';
 @NgModule({
   declarations: [
     AppComponent,
-    EnterResultsComponent
+    EnterResultsComponent,
+    ViewResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,9 @@ import { EnterResultsComponent } from './enter-results/enter-results.component';
     MatSelectModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

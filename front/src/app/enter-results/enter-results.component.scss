@@ -2,6 +2,10 @@
 	grid-area: header;
 }
 
+.header-text {
+	margin: auto;
+}
+
 .left {
 	grid-area: left;
 }
@@ -17,10 +21,13 @@
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr;
 	grid-gap: 10px;
+	margin: 10px;
 }
 
 .bottom {
 	grid-area: bottom;
+	margin: 10px 10%;
+	text-align: end;
 }
 
 .container {
@@ -29,7 +36,15 @@
 						 "main"
 						 "bottom";
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr;					 
+	grid-template-rows: 100px 1fr 1fr;
+	min-height: 100vh;					 
+}
+
+@media screen and (max-width: 600px) {
+	.main {
+		grid-template-areas: "left"
+							 "right";
+	}
 }
 
 .white {
@@ -38,4 +53,20 @@
 
 .red {
 	color: #FF5722;
+}
+
+.container-item {
+	margin-bottom: 50px;
+}
+
+.header-item {
+	padding-bottom: 20px;
+}
+
+.radio-btn {
+	padding-right: 25px;
+}
+
+.btn {
+	padding-right: 25px;
 }
