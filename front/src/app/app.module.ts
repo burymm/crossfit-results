@@ -20,6 +20,7 @@ import { AppRoutingModule } from './/app-routing.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { AppRoutingModule } from './/app-routing.module';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatNativeDateModule,
     MatDatepickerModule,
     MatButtonModule,
     MatTableModule,
