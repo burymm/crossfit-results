@@ -16,6 +16,14 @@
 	margin: 10px;
 }
 
+.left {
+  grid-area: left;
+}
+
+.right {
+  grid-area: right;
+}
+
 .bottom {
 	grid-area: bottom;
 	margin: 10px 10%;
@@ -36,15 +44,16 @@
 	.main {
 		grid-template-areas: "left" "right";
 	}
+
+  .left {
+    grid-area: left;
+  }
+
+  .right {
+    grid-area: right;
+  }
 }
 
-.left {
-  grid-area: left;
-}
-
-.right {
-  grid-area: right;
-}
 
 .white {
 	color: white;
