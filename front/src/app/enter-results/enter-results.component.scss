@@ -6,14 +6,6 @@
 	margin: auto;
 }
 
-.left {
-	grid-area: left;
-}
-
-.right {
-	grid-area: right;
-}
-
 .main {
 	display:grid;
 	grid-area: main;
@@ -37,14 +29,21 @@
 						 "bottom";
 	grid-template-columns: 1fr;
 	grid-template-rows: 100px 1fr 1fr;
-	min-height: 100vh;					 
+	min-height: 100vh;
 }
 
 @media screen and (max-width: 600px) {
 	.main {
-		grid-template-areas: "left"
-							 "right";
+		grid-template-areas: "left" "right";
 	}
+}
+
+.left {
+  grid-area: left;
+}
+
+.right {
+  grid-area: right;
 }
 
 .white {
