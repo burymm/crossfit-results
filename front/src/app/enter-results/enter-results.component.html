@@ -1,12 +1,17 @@
-<div class="container crossfit-dark-theme">
+<h2 class="white main-header">Enter your result</h2>
+<div class="content">
+	
+	<div class="left">
 
-<div>
-	<mat-toolbar class="header" color="primary"><h3 class="header-text">Enter Result</h3></mat-toolbar>
-</div>
+		<div class="content-item">
+			<mat-form-field>
+  				<input matInput [matDatepicker]="picker" placeholder="Choose a date">
+  				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+		</div>
 
-	<div class="main">
-	<div class="left">	
-		<div class="container-item">
+		<div class="content-item">
 			<p class="white header-item">Choose exercises</p>
 			<mat-form-field>
   				<mat-select [(value)]="selected">
@@ -18,7 +23,7 @@
 			</mat-form-field>
 		</div>
 
-		<div class="container-item">
+		<div class="content-item">
 			<p class="white header-item">Type workout</p>
 			<mat-radio-group>
 	  			<mat-radio-button value="1" color="accent"><p class="radio-btn white">Full</p></mat-radio-button>
@@ -27,30 +32,29 @@
 		</div>
 
 
-		<div class="container-item">
+		<div class="content-item">
 			<p class="white header-item">Result</p>
 			<mat-form-field color="accent">
 	  			<textarea matInput placeholder="Enter result" matTextareaAutosize matAutosizeMinRows="2"
 	            	matAutosizeMaxRows="5" class="white"></textarea>
 			</mat-form-field>
 	 	</div>
-	</div>	
-	<div class="right container-item">
+	
+	</div> <!-- end left -->
+
+	<div class="right content-item">
+ 	
  		<form class="example-form">
-  			<mat-form-field class="example-full-width"  color="accent">
+  			<mat-form-field class="example-full-width" color="accent">
     		<textarea matInput placeholder="Leave a comment" class="white"></textarea>
   			</mat-form-field>
 		</form>
- 	</div>
-	</div><!-- end main -->
+ 	
+ 	</div> <!-- end right -->
 
+</div><!-- end content -->
 
- 	<div class="bottom">
- 		<button mat-raised-button color="primary" (click)="goToViewResults()">Save</button>
- 		<button mat-raised-button color="primary">Cancel</button>
- 	</div>
-
-</div><!-- end container -->
-
-
-<router-outlet></router-outlet>
+<footer class="bottom">
+	<a href="/results-view" class="btn-link"><button mat-raised-button color="primary">Save</button></a>
+ 	<a href="/results-view" class="btn-link"><button mat-raised-button color="primary">Cancel</button></a>
+</footer>
