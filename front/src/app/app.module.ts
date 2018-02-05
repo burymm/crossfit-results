@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { EnterResultsComponent } from './enter-results/enter-results.component';
 import { ViewResultsComponent } from './view-results/view-results.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { MatNativeDateModule } from "@angular/material";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AppRoutingModule } from './/app-routing.module';
     MatDatepickerModule,
     MatButtonModule,
     MatTableModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
