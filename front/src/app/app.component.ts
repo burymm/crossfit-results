@@ -16,6 +16,10 @@ export class AppComponent {
 		
 		switch (current_path) {
 
+			case ('/'):
+				this.title = 'View Results';
+				break;
+
 			case ('/results-enter'):
 				this.title = 'Enter Results';
 				break;
