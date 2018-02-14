@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-enter-results',
   templateUrl: './enter-results.component.html',
@@ -10,14 +11,13 @@ import { Router } from '@angular/router';
 
 export class EnterResultsComponent implements OnInit {
 
-  constructor(private router: Router) { }
+	constructor(private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-goToViewResults() {
-	this.router.navigate(['view']);
-} 
+	onClick() : void {
 
+	}
 }
 

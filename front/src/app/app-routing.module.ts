@@ -5,11 +5,11 @@ import { ViewResultsComponent } from './view-results/view-results.component';
 import { AppComponent}  from "./app.component";
 
 const routes: Routes = [{
-	  path: 'results-enter',
+	path: 'results-enter',
     component: EnterResultsComponent,
-  }, {
-	  path: 'results-view',
-    component: ViewResultsComponent,
+    }, {
+	path: 'results-view',
+    component: ViewResultsComponent
 	}, {
     path: '',
     redirectTo: 'results-view',
