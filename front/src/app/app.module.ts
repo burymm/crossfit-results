@@ -13,6 +13,7 @@ import { EnterResultsComponent } from './enter-results/enter-results.component';
 import { ViewResultsComponent } from './view-results/view-results.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MatNativeDateModule } from "@angular/material";
+import {HeaderComponent} from "./components/header/header.component";
 
 
 
@@ -20,7 +21,8 @@ import { MatNativeDateModule } from "@angular/material";
   declarations: [
     AppComponent,
     EnterResultsComponent,
-    ViewResultsComponent
+    ViewResultsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
