@@ -1,0 +1,15 @@
+net/service/testcrossfitresult/helper/WorkoutSerializer.class
+net/service/testcrossfitresult/helper/WorkoutDeserializer.class
+net/service/testcrossfitresult/helper/ExercisesSerializer.class
+net/service/testcrossfitresult/entity/WorkoutType.class
+net/service/testcrossfitresult/rest/RSAplication.class
+net/service/testcrossfitresult/service/GenericService.class
+net/service/testcrossfitresult/helper/JSONHelper.class
+net/service/testcrossfitresult/helper/ResultsSerializer.class
+net/service/testcrossfitresult/util/HibernateUtil.class
+net/service/testcrossfitresult/dao/IGenericDao.class
+net/service/testcrossfitresult/rest/RestfullService.class
+net/service/testcrossfitresult/helper/ExercisesDeserializer.class
+net/service/testcrossfitresult/helper/ResultsDeseriallizer.class
+net/service/testcrossfitresult/entity/Results.class
+net/service/testcrossfitresult/entity/Exercises.class
