@@ -1,0 +1,63 @@
+<app-header title="Enter results"></app-header>
+
+<h2 class="white main-header">Enter your result</h2>
+<div class="content">
+
+	<div class="left">
+
+		<div class="content-item">
+			<mat-form-field color="accent">
+  				<input matInput [matDatepicker]="picker" placeholder="Choose a date" class="white">
+  				<mat-datepicker-toggle matSuffix [for]="picker" class="white"></mat-datepicker-toggle>
+  				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+		</div>
+
+		<div class="content-item">
+			<p class="white header-item">Choose exercises</p>
+			<mat-form-field>
+  				<mat-select [(value)]="selected">
+   				<mat-option color="primary"><p class="red">None</p></mat-option>
+    			<mat-option value="option1" color="primary"><p class="red">Option 1</p></mat-option>
+    			<mat-option value="option2" color="primary"><p class="red">Option 2</p></mat-option>
+    			<mat-option value="option3" color="primary"><p class="red">Option 3</p></mat-option>
+ 				</mat-select>
+			</mat-form-field>
+		</div>
+
+		<div class="content-item">
+			<p class="white header-item">Type workout</p>
+			<mat-radio-group>
+	  			<mat-radio-button value="1" color="accent"><p class="radio-btn white">Full</p></mat-radio-button>
+	  			<mat-radio-button value="2" color="accent"><p class="radio-btn white">Light</p></mat-radio-button>
+			</mat-radio-group>
+		</div>
+
+
+		<div class="content-item">
+			<p class="white header-item">Result</p>
+			<mat-form-field color="accent">
+	  			<textarea matInput placeholder="Enter result" matTextareaAutosize matAutosizeMinRows="2"
+	            	matAutosizeMaxRows="5" class="white"></textarea>
+			</mat-form-field>
+	 	</div>
+
+	</div> <!-- end left -->
+
+	<div class="right content-item">
+
+ 		<form class="example-form">
+  			<mat-form-field class="example-full-width" color="accent">
+    		<textarea matInput placeholder="Leave a comment" class="white"></textarea>
+  			</mat-form-field>
+		</form>
+
+ 	</div> <!-- end right -->
+
+</div><!-- end content -->
+
+<footer class="bottom">
+	<a href="/results-view" class="btn-link"><button mat-raised-button color="primary" (click)="onClick()">Save</button></a>
+ 	<a href="/results-view" class="btn-link"><button mat-raised-button color="primary">Cancel</button></a>
+</footer>
+

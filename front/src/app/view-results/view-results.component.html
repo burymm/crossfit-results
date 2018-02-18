@@ -1,0 +1,53 @@
+<app-header title="View results"></app-header>
+
+<h2 class="white main-header">View your result</h2>
+
+<div class="content">
+
+	<div class="left">
+
+		<div class="content-item">
+			<p class="white header-item">Period start</p>
+		    <mat-form-field color="accent">
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" class="white">
+          <mat-datepicker-toggle matSuffix [for]="picker" class="white"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+		<div class="content-item">
+			<p class="white header-item">Choose exercises</p>
+			<mat-form-field>
+  				<mat-select [(value)]="selected">
+   				<mat-option color="primary"><p class="red">None</p></mat-option>
+    			<mat-option value="option1" color="primary"><p class="red">Option 1</p></mat-option>
+    			<mat-option value="option2" color="primary"><p class="red">Option 2</p></mat-option>
+    			<mat-option value="option3" color="primary"><p class="red">Option 3</p></mat-option>
+ 				</mat-select>
+			</mat-form-field>
+		</div>
+
+	</div> <!-- end left -->
+
+	<div class="right">
+
+		<div class="content-item">
+			<p class="white header-item">Period end</p>
+      <mat-form-field color="accent">
+          <input matInput [matDatepicker]="picker1" placeholder="Choose a date" class="white">
+          <mat-datepicker-toggle matSuffix [for]="picker1" class="white"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+		</div>
+
+		<div class="content-item">
+			<p class="white header-item">Switch to diagram</p>
+		</div>
+
+  </div> <!-- end right -->
+
+</div> <!-- end content -->
+
+<div class="add-btn">
+  <a href="/results-enter" class="btn-link"><button mat-raised-button color="primary">Add new</button></a>
+</div>

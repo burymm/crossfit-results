@@ -1,0 +1,60 @@
+.main-header {
+	padding: 5% 20px 0;
+}
+
+.left {
+  grid-area: left;
+}
+
+.right {
+  grid-area: right;
+}
+
+.content {
+	display: grid;
+	grid-template-areas: "left right";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	grid-gap: 10px;
+	margin: 5% 20px;
+}
+
+@media screen and (max-width: 600px) {
+	.content {
+		grid-template-areas: "left" "right";
+	}
+
+  .left {
+    grid-area: left;
+  }
+
+  .right {
+    grid-area: right;
+  }
+}
+
+.white {
+	color: white;
+}
+
+.red {
+	color: #FF5722;
+}
+
+.content-item {
+	margin-bottom: 50px;
+}
+
+.header-item {
+	padding-bottom: 20px;
+}
+
+.bottom {
+	margin: 10px 10%;
+	text-align: end;
+}
+
+.add-btn {
+	text-align: end;
+	padding-right: 10%;
+}

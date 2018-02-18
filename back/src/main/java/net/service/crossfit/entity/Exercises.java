@@ -1,5 +1,5 @@
 
-package net.service.testcrossfitresult.entity;
+package net.service.crossfit.entity;
 
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;

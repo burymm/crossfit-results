@@ -1,4 +1,4 @@
-package net.service.testcrossfitresult.entity;
+package net.service.crossfit.entity;
 
 import java.io.Serializable;
 import java.util.Date;
