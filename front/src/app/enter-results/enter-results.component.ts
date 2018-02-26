@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { UsersService } from '../users.service';
 
 
 @Component({
@@ -11,13 +12,18 @@ import { Router } from '@angular/router';
 
 export class EnterResultsComponent implements OnInit {
 
-	constructor(private router: Router, private route: ActivatedRoute) { }
+Users = [];
+
+	constructor(private router: Router, private route: ActivatedRoute, private usersService: UsersService) { }
+
+
 
 	ngOnInit() {
+		this.Users = this.usersService.User;
 	}
 
-	onClick() : void {
-
-	}
+onClick() {
+	console.log(this.Users[1]);
+}
 }
 
