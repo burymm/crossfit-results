@@ -1,20 +1,20 @@
-<div class="container crossfit-dark-theme">
+<app-header title="Enter results"></app-header>
 
-<div>
-	<mat-toolbar class="header" color="primary">HEADER</mat-toolbar>
-</div>
+<h2 class="white main-header">Enter your result</h2>
+<div class="content">
 
-
-	<div class="main">
 	<div class="left">
-		<div>
-      <mat-form-field>
-        <input matInput [matDatepicker]="exciseDatepicker">
-        <mat-datepicker-toggle matSuffix [for]="exciseDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #exciseDatepicker></mat-datepicker>
-      </mat-form-field>
 
-			<p class="white">Choose exercises</p>
+		<div class="content-item">
+			<mat-form-field color="accent">
+  				<input matInput [matDatepicker]="picker" placeholder="Choose a date" class="white">
+  				<mat-datepicker-toggle matSuffix [for]="picker" class="white"></mat-datepicker-toggle>
+  				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+		</div>
+
+		<div class="content-item">
+			<p class="white header-item">Choose exercises</p>
 			<mat-form-field>
   				<mat-select [(value)]="selected">
    				<mat-option color="primary"><p class="red">None</p></mat-option>
@@ -25,38 +25,39 @@
 			</mat-form-field>
 		</div>
 
-		<div>
-			<p class="white">Type workout</p>
+		<div class="content-item">
+			<p class="white header-item">Type workout</p>
 			<mat-radio-group>
-	  			<mat-radio-button value="1" color="accent"><p class="white">Full</p></mat-radio-button>
-	  			<mat-radio-button value="2" color="accent"><p class="white">Light</p></mat-radio-button>
+	  			<mat-radio-button value="1" color="accent"><p class="radio-btn white">Full</p></mat-radio-button>
+	  			<mat-radio-button value="2" color="accent"><p class="radio-btn white">Light</p></mat-radio-button>
 			</mat-radio-group>
 		</div>
 
 
-		<div>
-			<p class="white">Result</p>
+		<div class="content-item">
+			<p class="white header-item">Result</p>
 			<mat-form-field color="accent">
 	  			<textarea matInput placeholder="Enter result" matTextareaAutosize matAutosizeMinRows="2"
 	            	matAutosizeMaxRows="5" class="white"></textarea>
 			</mat-form-field>
 	 	</div>
-	</div>
-	<div class="right">
+
+	</div> <!-- end left -->
+
+	<div class="right content-item">
+
  		<form class="example-form">
-  			<mat-form-field class="example-full-width"  color="accent">
+  			<mat-form-field class="example-full-width" color="accent">
     		<textarea matInput placeholder="Leave a comment" class="white"></textarea>
   			</mat-form-field>
 		</form>
- 	</div>
 
+ 	</div> <!-- end right -->
 
-	</div> <!-- end main -->
+</div><!-- end content -->
 
+<footer class="bottom">
+	<a href="/results-view" class="btn-link"><button mat-raised-button color="primary" (click)="onClick()">Save</button></a>
+ 	<a href="/results-view" class="btn-link"><button mat-raised-button color="primary">Cancel</button></a>
+</footer>
 
- 	<div class="bottom">
- 		<button mat-raised-button color="primary">Save</button>
- 		<button mat-raised-button color="primary">Cancel</button>
- 	</div>
-
-</div>

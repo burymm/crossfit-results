@@ -19,8 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
-        "crossfit-theme.scss"
+        "assets/styles/styles.scss",
+        "assets/styles/crossfit-theme.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
