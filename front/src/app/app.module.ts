@@ -15,6 +15,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { MatNativeDateModule } from "@angular/material";
 import {HeaderComponent} from "./components/header/header.component";
 import {UsersService} from './users.service';
+import { RestService } from "./rest.service";
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import {UsersService} from './users.service';
     AppRoutingModule,
     MatNativeDateModule,
   ],
-  providers: [UsersService],
+  providers: [UsersService, RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
