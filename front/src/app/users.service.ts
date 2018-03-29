@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { User } from "./user";
+import { HttpClient} from '@angular/common/http';
 
 
 @Injectable()
 export class UsersService {
 
-  User = [
+  public userData: User[] = [
     { id: 11, name: 'Mr. Nice' },
     { id: 12, name: 'Narco' },
     { id: 13, name: 'Bombasto' },
@@ -17,12 +19,17 @@ export class UsersService {
     { id: 20, name: 'Tornado' }
   ];
 
-
-  getUserData(userData){
-    return userData;
+  getUserData(): User[] {
+    return this.userData;
   }
 
-constructor() { }
+  addUserData(id: number, name: string){
+    this.userData.push(new User(id, name));
+  }
+
+constructor(private http: HttpClient) {
+
+}
 
 }
 

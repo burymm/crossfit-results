@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { UsersService } from '../users.service';
 import { RestService } from "../rest.service";
-
+import { User } from  "../user"
 
 @Component({
   selector: 'app-enter-results',
@@ -20,12 +20,12 @@ Users = [];
 
 
 	ngOnInit() {
-		this.Users = this.usersService.User;
+		this.Users = this.usersService.userData;
 	}
 
 onClick() {
 	console.log(this.Users[1]);
-	this.restService.saveUserData(userData);
+//this.restService.saveUserData(userData);
 }
 }
 
