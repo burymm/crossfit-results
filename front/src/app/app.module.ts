@@ -14,8 +14,10 @@ import { ViewResultsComponent } from './view-results/view-results.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MatNativeDateModule } from "@angular/material";
 import {HeaderComponent} from "./components/header/header.component";
-import {UsersService} from './users.service';
-import { RestService } from "./rest.service";
+import { UsersService } from './services/users.service';
+import { RestService } from './services/rest.service';
+import { ResultsService } from './services/results.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -37,8 +39,14 @@ import { RestService } from "./rest.service";
     MatTableModule,
     AppRoutingModule,
     MatNativeDateModule,
+    HttpClientModule,
   ],
-  providers: [UsersService, RestService],
+  providers: [
+    HttpClient,
+    UsersService,
+    RestService,
+    ResultsService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -44,6 +44,12 @@
 			<p class="white header-item">Switch to diagram</p>
 		</div>
 
+    <div class="table-results">
+      <div *ngFor="let result of results">
+        date {{ result.date }} result {{ result.value }}
+      </div>
+    </div>
+
   </div> <!-- end right -->
 
 </div> <!-- end content -->

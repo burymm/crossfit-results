@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { UsersService } from '../users.service';
-import { RestService } from "../rest.service";
 import { User } from  "../user"
+import { UsersService } from '../services/users.service';
+import { RestService } from '../services/rest.service';
 
 @Component({
   selector: 'app-enter-results',
@@ -15,7 +15,10 @@ export class EnterResultsComponent implements OnInit {
 
 Users = [];
 
-	constructor(private router: Router, private route: ActivatedRoute, private usersService: UsersService, private restService: RestService) { }
+	constructor(private router: Router,
+              private route: ActivatedRoute,
+              private usersService: UsersService,
+              private restService: RestService) { }
 
 
 

@@ -10,7 +10,9 @@ const server = http.createServer((req, res) => {
         case 'GET':
           res.statusCode = 200;
           res.setHeader('Content-Type', 'application/json');
-          res.end(JSON.stringify([{value: 100, date: '24/04/2018'}, {value: 100, date: '24/04/2018'}]));
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+          res.end(JSON.stringify([{value: 100, date: '24/04/2018'}, {value: 150, date: '25/04/2018'}]));
           break;
       }
       break;
