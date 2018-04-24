@@ -14,7 +14,8 @@ import { ViewResultsComponent } from './view-results/view-results.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MatNativeDateModule } from "@angular/material";
 import {HeaderComponent} from "./components/header/header.component";
-
+import {UsersService} from './users.service';
+import { RestService } from "./rest.service";
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import {HeaderComponent} from "./components/header/header.component";
     AppRoutingModule,
     MatNativeDateModule,
   ],
-  providers: [],
+  providers: [UsersService, RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
