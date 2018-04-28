@@ -18,6 +18,7 @@ import { UsersService } from './services/users.service';
 import { RestService } from './services/rest.service';
 import { ResultsService } from './services/results.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MatNativeDateModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     HttpClient,
