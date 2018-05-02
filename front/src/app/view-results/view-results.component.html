@@ -46,8 +46,13 @@
 
   </div> <!-- end right -->
 
+  <div class="table-results">
+    <div *ngFor="let result of results">
+      {{ result | json }}
+    </div>
+  </div>
 </div> <!-- end content -->
 
 <div class="add-btn">
-  <a href="/results-enter" class="btn-link"><button mat-raised-button color="primary">Add new</button></a>
+  <button class="btn-link"><button mat-raised-button color="primary" (click)="onAddResultClick()">Add new</button></button>
 </div>

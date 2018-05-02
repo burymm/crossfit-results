@@ -5,14 +5,14 @@ import { ViewResultsComponent } from './view-results/view-results.component';
 import { AppComponent}  from "./app.component";
 
 const routes: Routes = [{
-	path: 'results-enter',
+	path: 'add-result',
     component: EnterResultsComponent,
     }, {
-	path: 'results-view',
+	path: 'results',
     component: ViewResultsComponent
 	}, {
     path: '',
-    redirectTo: 'results-view',
+    redirectTo: 'results',
     pathMatch: 'full'
   },
 ];
