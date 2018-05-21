@@ -1,5 +1,16 @@
 # Crossfit results
-## run application
+
+## Installation
+### Mongo for windows
+Install mongo mongodb via link
+https://www.mongodb.com/download-center#community
+- Use custom menu installation.
+- Install to `c:\mongodb` folder 
+- Uncheck Install mongodb Compass option
+- Add c:\mongodb\bin\ to system environment path
+- create local db use script `create-db.cmd && mongo-server.cmd`
+
+## Run application
 From node folder run script
 `mongo-server.cmd`
 
