@@ -19,6 +19,7 @@ import { RestService } from './services/rest.service';
 import { ResultsService } from './services/results.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {ExercisesModule} from "./exercises/exercises.module";
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     MatNativeDateModule,
     HttpClientModule,
     FormsModule,
+    ExercisesModule,
   ],
   providers: [
     HttpClient,

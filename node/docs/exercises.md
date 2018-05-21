@@ -1,9 +1,9 @@
-#Exercises
+# Exercises
 
 ## Get list of exercises 
-GET `/results`
+GET `/exercises`
 
 ## Add new result to db
-POST `/results`
+POST `/exercises`
 
 Result data in body

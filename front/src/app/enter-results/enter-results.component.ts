@@ -5,6 +5,8 @@ import { User } from  "../user"
 import { UsersService } from '../services/users.service';
 import { RestService } from '../services/rest.service';
 import { Exercise, Workout } from '../models/models';
+import {MatDialog} from "@angular/material";
+import {NewExerciseDialog} from "../exercises/new-exercise.dialog/new-exercise.dialog";
 
 @Component({
   selector: 'app-enter-results',
@@ -21,7 +23,8 @@ export class EnterResultsComponent implements OnInit {
   workoutType: Workout = Workout.Rx;
   workoutResult: number;
 
-	constructor(private router: Router,
+	constructor(public dialog: MatDialog,
+	            private router: Router,
               private route: ActivatedRoute,
               private usersService: UsersService,
               private restService: RestService) { }
@@ -42,6 +45,17 @@ export class EnterResultsComponent implements OnInit {
 
   onCancel() {
 	  this.router.navigateByUrl('results');
+  }
+
+  addNewExercise() {
+	  let dialogRef = this.dialog.open(NewExerciseDialog,  {
+      width: '250px',
+      data: { }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   onSaveResult() {

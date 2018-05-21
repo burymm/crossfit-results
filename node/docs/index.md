@@ -1,3 +1,7 @@
 # Rest API documentation
+## Results 
+[results.md](results.md)
+
 ## Exercises 
-[exercises.md](exercises.md)
+[exercises](exercises.md)
+
