@@ -17,9 +17,10 @@ import {HeaderComponent} from "./components/header/header.component";
 import { UsersService } from './services/users.service';
 import { RestService } from './services/rest.service';
 import { ResultsService } from './services/results.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {ExercisesModule} from "./exercises/exercises.module";
+import {RequestInterceptor} from "./services/request-interceptor";
 
 
 @NgModule({
@@ -50,6 +51,11 @@ import {ExercisesModule} from "./exercises/exercises.module";
     UsersService,
     RestService,
     ResultsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

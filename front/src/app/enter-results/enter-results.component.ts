@@ -7,6 +7,7 @@ import { RestService } from '../services/rest.service';
 import { Exercise, Workout } from '../models/models';
 import {MatDialog} from "@angular/material";
 import {NewExerciseDialog} from "../exercises/new-exercise.dialog/new-exercise.dialog";
+import {ExerciseService} from "../services/exercise.service";
 
 @Component({
   selector: 'app-enter-results',
@@ -22,18 +23,14 @@ export class EnterResultsComponent implements OnInit {
   exercise: Exercise;
   workoutType: Workout = Workout.Rx;
   workoutResult: number;
+  exercises: Exercise[] = [];
 
 	constructor(public dialog: MatDialog,
 	            private router: Router,
               private route: ActivatedRoute,
               private usersService: UsersService,
-              private restService: RestService) { }
-
-
-
-  get exercises(): string[] {
-	  return Object.values(Exercise);
-  }
+              private restService: RestService,
+              private exService: ExerciseService) { }
 
   get workoutList(): string[] {
 	  return Object.values(Workout);
@@ -41,6 +38,7 @@ export class EnterResultsComponent implements OnInit {
 
 	ngOnInit() {
 		this.Users = this.usersService.userData;
+		this.loadExerciseList();
 	}
 
   onCancel() {
@@ -55,6 +53,7 @@ export class EnterResultsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.loadExerciseList();
     });
   }
 
@@ -68,7 +67,12 @@ export class EnterResultsComponent implements OnInit {
     }).subscribe((result) => {
       console.log(result);
     });
-    //this.restService.saveUserData(userData);
+  }
+
+  loadExerciseList() {
+    this.exService.getList().subscribe((list) => {
+      this.exercises = list;
+    })
   }
 }
 

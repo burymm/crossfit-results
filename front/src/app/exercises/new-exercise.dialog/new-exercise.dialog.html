@@ -1,1 +1,25 @@
-<h2>Enter your result</h2>
+<h2>New exercise</h2>
+<div>
+  <label for="name">Exercise name</label>
+  <input type="text" id="name" name="name" [(ngModel)]="name">
+</div>
+
+<div>
+  <label for="description">Exercise description</label>
+  <textarea type="text" id="description" name="description" [(ngModel)]="description"></textarea>
+</div>
+
+<div>
+  <label for="rx-result">Exercise result for Rx version</label>
+  <input type="text" id="rx-result" name="rx-result" [(ngModel)]="result.Rx">
+</div>
+
+<div>
+  <label for="sc-result">Exercise result for Sc version</label>
+  <input type="text" id="sc-result" name="sc-result" [(ngModel)]="result.Sc">
+</div>
+
+<div>
+  <button (click)="onSave()">Save</button>
+  <button (click)="onCance()">Cancel</button>
+</div>

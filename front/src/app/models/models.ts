@@ -1,5 +1,15 @@
 export enum Workout { Rx = 'Rx', Sc = 'Scalable' };
-export enum Exercise { Type1 = 'Type1', Type2 = 'Type2' };
+
+export type ExResult = {
+  Rx: number;
+  Sc: number;
+}
+
+export type Exercise = {
+  name: string;
+  result: ExResult;
+  description?: string;
+};
 export type WorkoutResult = {
   trainingDate: Date;
   exercise: Exercise;
@@ -7,3 +17,4 @@ export type WorkoutResult = {
   workoutResult: number;
   comment?: string;
 };
+

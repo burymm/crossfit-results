@@ -23,7 +23,7 @@
         <mat-select [(ngModel)]="exercise">
           <mat-option *ngFor="let exerciseItem of exercises"
                       color="primary" [value]="exerciseItem">
-            <p class="red">{{ exerciseItem }}</p>
+            <p class="red">{{ exerciseItem.name }}</p>
           </mat-option>
         </mat-select>
 			</mat-form-field>
