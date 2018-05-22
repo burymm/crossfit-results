@@ -23,7 +23,7 @@ import {ExercisesModule} from "./exercises/exercises.module";
 import {RequestInterceptor} from "./services/request-interceptor";
 import { FooterComponent } from './components/footer/footer.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
