@@ -1,25 +1,23 @@
-<app-header title="Enter results"></app-header>
 
-<h2 class="white main-header">Enter your result</h2>
 <div class="content">
 
-	<div class="left">
 
-		<div class="content-item">
-			<mat-form-field color="accent">
+		<div class="content-item date">
+      <button  class="white header-item" mat-raised-button (click)="openDialog()">Choose a date</button>
+      <mat-form-field color="accent" class="data-item">
   				<input matInput [matDatepicker]="picker"
                  placeholder="Choose a date"
-                 class="white"
+                 class="grey"
                  [(ngModel)]="trainingDate"
           >
-  				<mat-datepicker-toggle matSuffix [for]="picker" class="white"></mat-datepicker-toggle>
+  				<mat-datepicker-toggle matSuffix [for]="picker" class="grey"></mat-datepicker-toggle>
   				<mat-datepicker #picker></mat-datepicker>
 			</mat-form-field>
 		</div>
 
-		<div class="content-item">
-			<p class="white header-item">Choose exercises</p>
-			<mat-form-field>
+		<div class="content-item center">
+      <button  class="white header-item" mat-raised-button (click)="openDialog()">Choose exercises</button>
+			<mat-form-field class="data-item">
         <mat-select [(ngModel)]="exercise">
           <mat-option *ngFor="let exerciseItem of exercises"
                       color="primary" [value]="exerciseItem">
@@ -29,9 +27,9 @@
 			</mat-form-field>
 		</div>
 
-		<div class="content-item">
-			<p class="white header-item">Type workout</p>
-			<mat-radio-group [(ngModel)]="workoutType">
+		<div class="content-item type">
+      <button  class="white header-item" mat-raised-button (click)="openDialog()">Type workout</button>
+      <mat-radio-group [(ngModel)]="workoutType" class="data-item">
 	  			<mat-radio-button *ngFor="let workoutListItem of workoutList" color="accent" name="workoutType"
                             [value]="workoutListItem">
             <p class="radio-btn white">{{ workoutListItem }}</p>
@@ -40,29 +38,9 @@
 		</div>
 
 
-		<div class="content-item">
-			<p class="white header-item">Result</p>
-			<mat-form-field color="accent">
-        <input matInput type="text" [(ngModel)]="workoutResult">
-			</mat-form-field>
-	 	</div>
+ </div><!-- end content -->
 
-	</div> <!-- end left -->
-
-	<div class="right content-item">
-
- 		<form class="example-form">
-  			<mat-form-field class="example-full-width" color="accent">
-    		<textarea matInput placeholder="Leave a comment" class="white"></textarea>
-  			</mat-form-field>
-		</form>
-
- 	</div> <!-- end right -->
-
-</div><!-- end content -->
-
-<footer class="bottom">
-	<button class="btn-link"><button mat-raised-button color="primary" (click)="onSaveResult()">Save</button></button>
- 	<button class="btn-link"><button mat-raised-button color="primary" (click)="onCancel()">Cancel</button></button>
-</footer>
+<div class="main-header"> <!-- main-header -->
+  <button  class="white main-header-text" mat-raised-button (click)="openDialog()">enter your results</button>
+</div> <!-- end main-header -->
 

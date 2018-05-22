@@ -1,13 +1,13 @@
 @import '~@angular/material/_theming';
 @include mat-core();
 
-$custom-primary: mat-palette($mat-grey, 800);
-$custom-accent:  mat-palette($mat-red, 500);
+$custom-primary: mat-palette($mat-grey, 900);
+$custom-accent:  mat-palette($mat-orange, 700);
 $custom-warn: mat-palette($mat-grey, 900);
 
 $custom-theme: mat-dark-theme($custom-primary, $custom-accent, $custom-warn);
 @include angular-material-theme($custom-theme);
 
 .crossfit-dark-theme {
-  background-color: mat-color($custom-warn);
+  background-color: black;
 }

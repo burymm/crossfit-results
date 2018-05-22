@@ -19,6 +19,10 @@ import { RestService } from './services/rest.service';
 import { ResultsService } from './services/results.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import { FooterComponent } from './components/footer/footer.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -27,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     EnterResultsComponent,
     ViewResultsComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,9 @@ import { FormsModule } from '@angular/forms';
     MatNativeDateModule,
     HttpClientModule,
     FormsModule,
+    MatCardModule,
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [
     HttpClient,

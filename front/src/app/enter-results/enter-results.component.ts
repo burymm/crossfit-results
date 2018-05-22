@@ -6,6 +6,7 @@ import { UsersService } from '../services/users.service';
 import { RestService } from '../services/rest.service';
 import { Exercise, Workout } from '../models/models';
 
+
 @Component({
   selector: 'app-enter-results',
   templateUrl: './enter-results.component.html',
@@ -35,6 +36,7 @@ export class EnterResultsComponent implements OnInit {
   get workoutList(): string[] {
 	  return Object.values(Workout);
   }
+
 
 	ngOnInit() {
 		this.Users = this.usersService.userData;

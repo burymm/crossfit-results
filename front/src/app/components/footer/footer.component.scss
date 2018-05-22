@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+  grid-template-areas: "bottom-first os invite social";
+  justify-content: space-around;
+  margin: 0 2%;
+}
+
+.bottom-first{
+  grid-area: bottom-first;
+}
+
+.os {
+  grid-area: os;
+}
+
+.invite{
+  grid-area: invite;
+}
+
+.social {
+  grid-area: social;
+  justify-self: auto;
+}
+
+.white {
+  color: white;
+}
