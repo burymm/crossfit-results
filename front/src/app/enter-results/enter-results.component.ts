@@ -9,6 +9,7 @@ import {MatDialog} from "@angular/material";
 import {NewExerciseDialog} from "../exercises/new-exercise.dialog/new-exercise.dialog";
 import {ExerciseService} from "../services/exercise.service";
 
+
 @Component({
   selector: 'app-enter-results',
   templateUrl: './enter-results.component.html',
@@ -35,6 +36,7 @@ export class EnterResultsComponent implements OnInit {
   get workoutList(): string[] {
 	  return Object.values(Workout);
   }
+
 
 	ngOnInit() {
 		this.Users = this.usersService.userData;

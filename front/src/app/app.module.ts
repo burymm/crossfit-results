@@ -21,6 +21,9 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import { FormsModule } from '@angular/forms';
 import {ExercisesModule} from "./exercises/exercises.module";
 import {RequestInterceptor} from "./services/request-interceptor";
+import { FooterComponent } from './components/footer/footer.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -29,6 +32,7 @@ import {RequestInterceptor} from "./services/request-interceptor";
     EnterResultsComponent,
     ViewResultsComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,8 @@ import {RequestInterceptor} from "./services/request-interceptor";
     HttpClientModule,
     FormsModule,
     ExercisesModule,
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [
     HttpClient,

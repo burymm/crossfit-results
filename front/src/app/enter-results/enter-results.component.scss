@@ -1,55 +1,88 @@
 @import "../theme/theme";
-
-.main-header {
-	padding: 5% 20px 0;
-}
-
-.left {
-  grid-area: left;
-}
-
-.right {
-  grid-area: right;
-}
+$main-color: #f57c00;
 
 .content {
-	display: grid;
-	grid-template-areas: "left right";
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr;
-	grid-gap: 10px;
-	margin: 5% 20px;
+  display: grid;
+  grid-template-areas: "date center type";
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around;
+  align-content: start;
+  margin-top: 3%;
 }
 
-@media screen and (max-width: 600px) {
-	.content {
-		grid-template-areas: "left" "right";
-	}
+.content-item {
+  display: grid;
+  justify-self: center;
+  align-content: start;
+  max-width: 275px;
+}
 
-  .left {
-    grid-area: left;
+.header-item {
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid $main-color;
+  border-radius: 0px;
+  min-width: 225px;
+  max-width: 275px;
+  padding: 1% auto;
+  margin-bottom: 20px;
+}
+
+.data-item {
+  min-width: 200px;
+  justify-self: center;
+}
+
+@media only screen and (max-width: 680px) {
+  .content {
+    display: grid;
+    grid-template-areas: "date"
+                        "center"
+                        "type";
+    margin: 3% 50%;
   }
 
-  .right {
-    grid-area: right;
+  .date {
+    grid-area: date;
   }
+
+  .center {
+    grid-area: center;
+  }
+
+  .type {
+    grid-area: type;
+  }
+}
+
+.date {
+  grid-area: date;
+  min-width: 210px;
+}
+
+.center {
+  grid-area: center;
+  min-width: 210px;
+}
+
+.type {
+  grid-area: type;
+  min-width: 210px;
 }
 
 .white {
-	color: white;
+  color: white;
+}
+
+.grey {
+	color: grey;
 }
 
 .red {
 	color: #FF5722;
 }
 
-.content-item {
-	margin-bottom: 50px;
-}
 
-.header-item {
-	padding-bottom: 20px;
-}
 
 .radio-btn {
 	padding-right: 25px;
@@ -59,8 +92,17 @@
 	padding-right: 25px;
 }
 
-.bottom {
-	padding-top: 10px;
-	padding-right: 10%;
-	text-align: end;
+.main-header {
+  display: grid;
+  justify-content: center;
 }
+
+.main-header-text {
+  padding: 1% 5%;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(to top, $main-color, #4c2d00, $main-color);
+  border-radius: 0px;
+}
+
+
