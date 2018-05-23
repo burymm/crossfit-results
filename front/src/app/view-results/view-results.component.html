@@ -4,12 +4,22 @@
 
 <div class="content">
 
+  <ag-grid-angular
+    class="ag-theme-balham-dark results-table"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+  >
+  </ag-grid-angular>
+
+<!--
 
   <div class="table-results">
     <div *ngFor="let result of results">
       {{ result | json }}
     </div>
   </div>
+
+-->
 </div> <!-- end content -->
 
 

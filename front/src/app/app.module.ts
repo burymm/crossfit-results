@@ -24,6 +24,7 @@ import {RequestInterceptor} from "./services/request-interceptor";
 import { FooterComponent } from './components/footer/footer.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ExercisesModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    AgGridModule.withComponents([])
   ],
   providers: [
     HttpClient,

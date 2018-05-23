@@ -36,9 +36,7 @@ $main-color: #f57c00;
 @media only screen and (max-width: 680px) {
   .content {
     display: grid;
-    grid-template-areas: "date"
-                        "center"
-                        "type";
+    grid-template-areas: "date" "center" "type";
     margin: 3% 50%;
   }
 
