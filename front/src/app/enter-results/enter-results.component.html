@@ -1,6 +1,18 @@
 
 <div class="content">
 
+  <div class="content-item">
+    <mat-form-field color="accent">
+      <input matInput [(ngModel)]="cardNumber" placeholder="User card number">
+    </mat-form-field>
+  </div>
+
+  <div class="content-item">
+    <mat-form-field color="accent">
+      <input matInput [(ngModel)]="workoutResult" placeholder="Result">
+    </mat-form-field>
+  </div>
+
 
 		<div class="content-item date">
       <button  class="white header-item" mat-raised-button (click)="openDialog()">Choose a date</button>
@@ -42,6 +54,8 @@
  </div><!-- end content -->
 
 <div class="main-header"> <!-- main-header -->
-  <button  class="white main-header-text" mat-raised-button (click)="openDialog()">enter your results</button>
+  <button  class="white main-header-text" mat-raised-button (click)="onSaveResult()">enter your results</button>
 </div> <!-- end main-header -->
+
+<div><button (click)="viewResult()">View results</button></div>
 

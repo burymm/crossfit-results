@@ -26,6 +26,7 @@ export class NewExerciseDialog {
       name: this.name,
       description: this.description,
       result: this.result,
+      _id: void 0,
     }).subscribe(() => {
       this.dialogRef.close();
     });
