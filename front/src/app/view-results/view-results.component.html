@@ -4,23 +4,16 @@
 
 <div class="content">
 
-  <ag-grid-angular
-    class="ag-theme-balham-dark results-table"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-  >
-  </ag-grid-angular>
-
-<!--
-
-  <div class="table-results">
+  <div class="table-results white">
     <div *ngFor="let result of results">
       {{ result | json }}
     </div>
   </div>
 
--->
+
 </div> <!-- end content -->
 
-
-<app-footer></app-footer>
+<div class="add-btn">
+  <button class="btn-link"><button mat-raised-button color="primary" (click)="onAddResultClick()">Add new</button></button>
+</div>
+  <app-footer></app-footer>

@@ -11,18 +11,6 @@ import { Router } from '@angular/router';
 export class ViewResultsComponent implements OnInit {
   results: any;
 
-  columnDefs = [
-    {headerName: 'RESULTS', field: 'result' },
-    {headerName: '110', field: 'model' },
-    {headerName: 'Price', field: 'price'}
-  ];
-
-  rowData = [
-    { result: 'Toyota', model: 'Celica', price: 35000 },
-    { result: 'Ford', model: 'Mondeo', price: 32000 },
-    { result: 'Porsche', model: 'Boxter', price: 72000 }
-  ];
-
   constructor(private rest: RestService,
               private router: Router) { }
 

@@ -25,6 +25,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { AgGridModule } from 'ag-grid-angular';
+import { NewResultDialogComponent } from './new-result-dialog/new-result-dialog.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AgGridModule } from 'ag-grid-angular';
     ViewResultsComponent,
     HeaderComponent,
     FooterComponent,
+    NewResultDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,7 @@ import { AgGridModule } from 'ag-grid-angular';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NewResultDialogComponent]
 })
 export class AppModule { }
