@@ -25,6 +25,7 @@ export class EnterResultsComponent implements OnInit {
   exercise: Exercise;
   workoutType: Workout = Workout.Rx;
   workoutResult: number;
+  cardNumber: string;
   exercises: Exercise[] = [];
 
 	constructor(public dialog: MatDialog,
@@ -72,12 +73,12 @@ export class EnterResultsComponent implements OnInit {
   }
 
   onSaveResult() {
-    console.log(this.trainingDate, this.exercise, this.workoutType, this.workoutResult);
     this.restService.addResult({
       trainingDate: this.trainingDate,
-      exercise: this.exercise,
+      exerciseId: this.exercise._id,
       workoutType: this.workoutType,
       workoutResult: this.workoutResult,
+      cardNumber: this.cardNumber,
     }).subscribe((result) => {
       console.log(result);
     });
@@ -87,6 +88,10 @@ export class EnterResultsComponent implements OnInit {
     this.exService.getList().subscribe((list) => {
       this.exercises = list;
     })
+  }
+
+  viewResult() {
+    this.router.navigateByUrl('/results');
   }
 }
 

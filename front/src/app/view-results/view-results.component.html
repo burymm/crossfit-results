@@ -1,10 +1,10 @@
 <app-header></app-header>
-<app-enter-results></app-enter-results>
 
-
+<button (click)="onAddResultClick()">Add result</button>
 <div class="content">
 
-  <div class="table-results white">
+  <div class="table-results">
+
     <div *ngFor="let result of results">
       {{ result | json }}
     </div>
