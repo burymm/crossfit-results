@@ -24,6 +24,8 @@ import {RequestInterceptor} from "./services/request-interceptor";
 import { FooterComponent } from './components/footer/footer.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { AgGridModule } from 'ag-grid-angular';
+import { NewResultDialogComponent } from './new-result-dialog/new-result-dialog.component';
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import { MatIconModule } from '@angular/material/icon';
     ViewResultsComponent,
     HeaderComponent,
     FooterComponent,
+    NewResultDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ExercisesModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    AgGridModule.withComponents([])
   ],
   providers: [
     HttpClient,
@@ -63,6 +67,7 @@ import { MatIconModule } from '@angular/material/icon';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NewResultDialogComponent]
 })
 export class AppModule { }

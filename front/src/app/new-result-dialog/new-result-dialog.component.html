@@ -1,0 +1,15 @@
+<div class="dialog-input">
+  <mat-dialog-content>
+    <mat-form-field color="primary">
+      <input type="number" matInput [(ngModel)]="result" placeholder="What's your result?" class="text-color">
+    </mat-form-field>
+  </mat-dialog-content>
+</div>
+<div class="dialog-btn">
+  <mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">
+      Cancel
+    </button>
+  </mat-dialog-actions>
+</div>
+

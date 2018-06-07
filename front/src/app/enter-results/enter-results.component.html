@@ -15,7 +15,7 @@
 
 
 		<div class="content-item date">
-      <button  class="white header-item" mat-raised-button (click)="openDialog()">Choose a date</button>
+      <button class="white header-item" mat-button>Choose a date</button>
       <mat-form-field color="accent" class="data-item">
   				<input matInput [matDatepicker]="picker"
                  placeholder="Choose a date"
@@ -28,7 +28,7 @@
 		</div>
 
 		<div class="content-item center">
-      <button  class="white header-item" mat-raised-button (click)="openDialog()">Choose exercises</button>
+      <button class="white header-item" mat-button>Choose exercises</button>
 			<mat-form-field class="data-item">
         <mat-select [(ngModel)]="exercise">
           <mat-option *ngFor="let exerciseItem of exercises"
@@ -38,10 +38,11 @@
         </mat-select>
 			</mat-form-field>
 		</div>
-    <button (click)="addNewExercise()">Add new exercise</button>
+
+  <button (click)="addNewExercise()">Add new exercise</button>
 
 		<div class="content-item type">
-      <button  class="white header-item" mat-raised-button (click)="openDialog()">Type workout</button>
+      <button class="white header-item" mat-button>Type workout</button>
       <mat-radio-group [(ngModel)]="workoutType" class="data-item">
 	  			<mat-radio-button *ngFor="let workoutListItem of workoutList" color="accent" name="workoutType"
                             [value]="workoutListItem">
@@ -54,7 +55,9 @@
  </div><!-- end content -->
 
 <div class="main-header"> <!-- main-header -->
+
   <button  class="white main-header-text" mat-raised-button (click)="onSaveResult()">enter your results</button>
+
 </div> <!-- end main-header -->
 
 <div><button (click)="viewResult()">View results</button></div>

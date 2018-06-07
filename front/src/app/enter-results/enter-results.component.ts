@@ -8,6 +8,7 @@ import { Exercise, Workout } from '../models/models';
 import {MatDialog} from "@angular/material";
 import {NewExerciseDialog} from "../exercises/new-exercise.dialog/new-exercise.dialog";
 import {ExerciseService} from "../services/exercise.service";
+import {NewResultDialogComponent} from "../new-result-dialog/new-result-dialog.component";
 
 
 @Component({
@@ -57,6 +58,17 @@ export class EnterResultsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.loadExerciseList();
+    });
+  }
+
+  addNewResult() {
+      let dialogRef = this.dialog.open(NewResultDialogComponent, {
+        width: '50%',
+        data: { result: this.workoutResult }
+      });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.workoutResult = result;
     });
   }
 
