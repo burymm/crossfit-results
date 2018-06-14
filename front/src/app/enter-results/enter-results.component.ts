@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { User } from  "../user"
 import { UsersService } from '../services/users.service';
 import { RestService } from '../services/rest.service';
 import { Exercise, Workout } from '../models/models';
-import {MatDialog} from "@angular/material";
+import {MatDialog, MatDialogRef} from "@angular/material";
 import {NewExerciseDialog} from "../exercises/new-exercise.dialog/new-exercise.dialog";
 import {ExerciseService} from "../services/exercise.service";
-import {NewResultDialogComponent} from "../new-result-dialog/new-result-dialog.component";
+import { MatIconRegistry } from "@angular/material/icon";
+import {DomSanitizer} from "@angular/platform-browser";
+import {MAT_DIALOG_DATA} from "@angular/material";
+
 
 
 @Component({
@@ -33,7 +36,15 @@ export class EnterResultsComponent implements OnInit {
               private route: ActivatedRoute,
               private usersService: UsersService,
               private restService: RestService,
-              private exService: ExerciseService) { }
+              private exService: ExerciseService,
+              private iconRegistry: MatIconRegistry,
+              private sanitizer: DomSanitizer,
+              public dialogRef: MatDialogRef<EnterResultsComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,) {
+
+    iconRegistry.addSvgIcon('add',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/baseline-add_circle_outline-24px.svg'));
+  }
 
   get workoutList(): string[] {
 	  return Object.values(Workout);
@@ -61,6 +72,7 @@ export class EnterResultsComponent implements OnInit {
     });
   }
 
+  /*
   addNewResult() {
       let dialogRef = this.dialog.open(NewResultDialogComponent, {
         width: '50%',
@@ -71,6 +83,7 @@ export class EnterResultsComponent implements OnInit {
       this.workoutResult = result;
     });
   }
+  */
 
   onSaveResult() {
     this.restService.addResult({
@@ -90,8 +103,10 @@ export class EnterResultsComponent implements OnInit {
     })
   }
 
+  /*
   viewResult() {
     this.router.navigateByUrl('/results');
   }
+  */
 }
 

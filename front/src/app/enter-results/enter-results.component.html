@@ -1,13 +1,13 @@
 
 <div class="content">
 
-  <div class="content-item">
+  <div class="content-item card-number">
     <mat-form-field color="accent">
       <input matInput [(ngModel)]="cardNumber" placeholder="User card number">
     </mat-form-field>
   </div>
 
-  <div class="content-item">
+  <div class="content-item actually-result">
     <mat-form-field color="accent">
       <input matInput [(ngModel)]="workoutResult" placeholder="Result">
     </mat-form-field>
@@ -39,7 +39,7 @@
 			</mat-form-field>
 		</div>
 
-  <button (click)="addNewExercise()">Add new exercise</button>
+  <button class="add-new-ex-btn" mat-raised-button (click)="addNewExercise()"><mat-icon svgIcon="add" class="icon-item">addNewExercise</mat-icon></button>
 
 		<div class="content-item type">
       <button class="white header-item" mat-button>Type workout</button>
@@ -54,11 +54,12 @@
 
  </div><!-- end content -->
 
-<div class="main-header"> <!-- main-header -->
 
-  <button  class="white main-header-text" mat-raised-button (click)="onSaveResult()">enter your results</button>
 
-</div> <!-- end main-header -->
+<button class="white enter-btn" mat-raised-button (click)="onSaveResult()">enter your result</button>
 
-<div><button (click)="viewResult()">View results</button></div>
 
+
+<!--
+  <div><button (click)="viewResult()">View results</button></div>
+-->

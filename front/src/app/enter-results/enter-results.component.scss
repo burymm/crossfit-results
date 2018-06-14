@@ -3,8 +3,9 @@ $main-color: #f57c00;
 
 .content {
   display: grid;
-  grid-template-areas: "date center type";
+  grid-template-areas: "date center type" "card-number actually-result add-btn";
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3px;
   justify-content: space-around;
   align-content: start;
   margin-top: 3%;
@@ -14,7 +15,9 @@ $main-color: #f57c00;
   display: grid;
   justify-self: center;
   align-content: start;
+  min-width: 200px;
   max-width: 275px;
+  margin-top: 1%;
 }
 
 .header-item {
@@ -22,7 +25,7 @@ $main-color: #f57c00;
   text-align: center;
   border: 1px solid $main-color;
   border-radius: 0px;
-  min-width: 225px;
+  min-width: 200px;
   max-width: 275px;
   padding: 1% auto;
   margin-bottom: 20px;
@@ -33,11 +36,19 @@ $main-color: #f57c00;
   justify-self: center;
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 800px) {
   .content {
     display: grid;
-    grid-template-areas: "date" "center" "type";
+    grid-template-areas: "date" "center" "type" "card-number" "actually-result" "add-btn";
     margin: 3% 50%;
+  }
+
+  .card-number {
+    grid-area: card-number;
+  }
+
+  .actually-result {
+    grid-area: actually-result;
   }
 
   .date {
@@ -48,9 +59,23 @@ $main-color: #f57c00;
     grid-area: center;
   }
 
+  .add-new-ex-btn {
+    grid-area: add-btn;
+  }
+
   .type {
     grid-area: type;
   }
+}
+
+.card-number {
+  grid-area: card-number;
+  min-width: 210px;
+}
+
+.actually-result {
+  grid-area: actually-result;
+  min-width: 210px;
 }
 
 .date {
@@ -60,6 +85,11 @@ $main-color: #f57c00;
 
 .center {
   grid-area: center;
+  min-width: 210px;
+}
+
+.add-new-ex-btn {
+  grid-area: add-btn;
   min-width: 210px;
 }
 
@@ -88,17 +118,15 @@ $main-color: #f57c00;
 	padding-right: 25px;
 }
 
-.main-header {
-  display: grid;
-  justify-content: center;
-}
-
-.main-header-text {
-  padding: 1% 7%;
+.enter-btn {
+  display: block;
+  margin: 3% auto;
   text-transform: uppercase;
   text-align: center;
   background: linear-gradient(to top, $main-color, #4c2d00, $main-color);
   border-radius: 0px;
 }
 
-
+.add-new-ex-btn {
+  background-color: transparent;
+}
