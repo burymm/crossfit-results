@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
-import { assign } from 'lodash';
+import { assign, map, first, filter, isNil } from 'lodash';
 import { Router } from '@angular/router';
 import {MatDialog} from "@angular/material";
 import {EnterResultsComponent} from "../enter-results/enter-results.component";
 import {ExerciseService} from "../services/exercise.service";
 import {Exercise} from "../models/models";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-view-results',
@@ -22,9 +23,10 @@ export class ViewResultsComponent implements OnInit {
               private exService: ExerciseService,) { }
 
   ngOnInit() {
-    Promise.all([this.loadResults(), this.loadExercises()]).then((data) => {
-      console.log(data);
-    });
+    this.exService.getList().subscribe((list) => {
+      this.exercises = list;
+      this.loadResults();
+    })
   }
 
   onAddResultClick() {
@@ -41,13 +43,21 @@ export class ViewResultsComponent implements OnInit {
 
   private loadResults() {
     return this.rest.getResults().subscribe((results) => {
-      assign(this, { results });
+      assign(this, { results: this.mapResults(results) });
     });
   }
 
-  private loadExercises() {
-    return this.exService.getList().subscribe((list) => {
-      this.exercises = list;
+  private mapResults(results) {
+    return map(results, (result) => {
+      const exercise = first(filter(this.exercises, (exercese) => {
+        return exercese._id === result.exerciseId;
+      }));
+
+      if (!isNil(exercise)) {
+        result.exercise = {};
+        assign(result.exercise, exercise);
+      }
+      return result;
     });
   }
 
