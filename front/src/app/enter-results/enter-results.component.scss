@@ -90,7 +90,7 @@ $main-color: #f57c00;
 
 .add-new-ex-btn {
   grid-area: add-btn;
-  min-width: 210px;
+  min-width: 10px;
 }
 
 .type {
@@ -127,6 +127,6 @@ $main-color: #f57c00;
   border-radius: 0px;
 }
 
-.add-new-ex-btn {
-  background-color: transparent;
+.icon-item {
+  width: 45px;
 }

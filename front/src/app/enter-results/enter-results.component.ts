@@ -43,7 +43,7 @@ export class EnterResultsComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any,) {
 
     iconRegistry.addSvgIcon('add',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/baseline-add_circle_outline-24px.svg'));
+      sanitizer.bypassSecurityTrustResourceUrl('/assets/img/baseline-add_circle_outline-24px.svg'));
   }
 
   get workoutList(): string[] {

@@ -39,7 +39,9 @@
 			</mat-form-field>
 		</div>
 
-  <button class="add-new-ex-btn" mat-raised-button (click)="addNewExercise()"><mat-icon svgIcon="add" class="icon-item">addNewExercise</mat-icon></button>
+  <button class="add-new-ex-btn" mat-icon-button (click)="addNewExercise()" title="add new exercise" color="accent">
+    <mat-icon svgIcon="add" class="icon-item"></mat-icon>
+  </button>
 
 		<div class="content-item type">
       <button class="white header-item" mat-button>Type workout</button>
