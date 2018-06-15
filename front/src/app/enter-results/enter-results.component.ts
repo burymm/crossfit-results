@@ -100,7 +100,7 @@ export class EnterResultsComponent implements OnInit {
   loadExerciseList() {
     this.exService.getList().subscribe((list) => {
       this.exercises = list;
-    })
+    });
   }
 
   /*

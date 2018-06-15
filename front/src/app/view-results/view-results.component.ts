@@ -4,6 +4,8 @@ import { assign } from 'lodash';
 import { Router } from '@angular/router';
 import {MatDialog} from "@angular/material";
 import {EnterResultsComponent} from "../enter-results/enter-results.component";
+import {ExerciseService} from "../services/exercise.service";
+import {Exercise} from "../models/models";
 
 @Component({
   selector: 'app-view-results',
@@ -12,16 +14,17 @@ import {EnterResultsComponent} from "../enter-results/enter-results.component";
 })
 export class ViewResultsComponent implements OnInit {
   results: any;
+  exercises: Exercise[] = [];
 
-  constructor(private rest: RestService,
+  constructor(public dialog: MatDialog,
+              private rest: RestService,
               private router: Router,
-              public dialog: MatDialog) { }
+              private exService: ExerciseService,) { }
 
   ngOnInit() {
-    this.rest.getResults().subscribe((results) => {
-      assign(this, { results });
-      console.log(results);
-    })
+    Promise.all([this.loadResults(), this.loadExercises()]).then((data) => {
+      console.log(data);
+    });
   }
 
   onAddResultClick() {
@@ -31,8 +34,20 @@ export class ViewResultsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.loadResults();
 
+    });
+  }
+
+  private loadResults() {
+    return this.rest.getResults().subscribe((results) => {
+      assign(this, { results });
+    });
+  }
+
+  private loadExercises() {
+    return this.exService.getList().subscribe((list) => {
+      this.exercises = list;
     });
   }
 

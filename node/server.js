@@ -1,4 +1,7 @@
 const http = require('http');
+const  url = require('url');
+const path = require('path');
+const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 
 const hostname = '127.0.0.1';
@@ -49,6 +52,14 @@ const server = http.createServer((req, res) => {
     body += chunk;
   });
   req.on('end', function () {
+
+  /*  // if static url
+    if (req.url.includes('/assets/')) {
+      console.log(req.url);
+      return;
+    }*/
+
+
     switch (req.method) {
       case 'OPTIONS':
         setOptionHeaders(res);
@@ -82,9 +93,47 @@ const server = http.createServer((req, res) => {
             break;
             break;
           default:
-            res.statusCode = 200;
+            var mimeTypes = {
+              "html": "text/html",
+              "jpeg": "image/jpeg",
+              "jpg": "image/jpeg",
+              "png": "image/png",
+              "svg": "image/svg",
+              "js": "text/javascript",
+              "css": "text/css"};
+
+
+            var uri = url.parse(req.url).pathname;
+            var filename = path.join(process.cwd(), uri);
+            fs.exists(filename, function(exists) {
+              if(!exists) {
+                console.log("not exists: " + filename);
+                res.writeHead(404, {'Content-Type': 'text/plain'});
+                res.write('404 Not Found\n');
+                res.end();
+                return;
+              }
+
+              setHeaders(res);
+              var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
+              res.writeHead(200, {'Content-Type':mimeType});
+
+              var fileStream = fs.createReadStream(filename);
+              fileStream.pipe(res);
+
+              fileStream.on('data', function (data) {
+                res.write(data);
+              });
+              fileStream.on('end', function() {
+                res.end();
+              });
+
+            }); //end path.exists
+
+
+            /*res.statusCode = 200;
             res.setHeader('Content-Type', 'text/plain');
-            res.end('Hello World\n');
+            res.end('Hello World\n');*/
             break;
         }
         break;
