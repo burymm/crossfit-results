@@ -3,19 +3,20 @@ $main-color: #f57c00;
 
 .content {
   display: grid;
-  grid-template-areas: "date center type" "card-number actually-result add-btn";
+  grid-template-areas: "date center type" "card-number actually-result type";
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 3px;
   justify-content: space-around;
   align-content: start;
   margin-top: 3%;
+  margin-left: 2%;
 }
 
 .content-item {
   display: grid;
-  justify-self: center;
+  justify-self: start;
   align-content: start;
-  min-width: 200px;
+  min-width: 210px;
   max-width: 275px;
   margin-top: 1%;
 }
@@ -39,7 +40,7 @@ $main-color: #f57c00;
 @media only screen and (max-width: 800px) {
   .content {
     display: grid;
-    grid-template-areas: "date" "center" "type" "card-number" "actually-result" "add-btn";
+    grid-template-areas: "date" "center" "type" "card-number" "actually-result";
     margin: 3% 50%;
   }
 
@@ -57,10 +58,6 @@ $main-color: #f57c00;
 
   .center {
     grid-area: center;
-  }
-
-  .add-new-ex-btn {
-    grid-area: add-btn;
   }
 
   .type {
@@ -86,16 +83,30 @@ $main-color: #f57c00;
 .center {
   grid-area: center;
   min-width: 210px;
+  display: grid;
+  grid-template-areas: "exercise exercise" "ex-form add-btn";
+  justify-content: space-around;
 }
 
 .add-new-ex-btn {
   grid-area: add-btn;
-  min-width: 10px;
+}
+
+.icon-item {
+  min-width: 25px;
 }
 
 .type {
   grid-area: type;
   min-width: 210px;
+}
+
+.exercise {
+  grid-area: exercise;
+}
+
+.ex-form {
+  grid-area: ex-form;
 }
 
 .white {
@@ -127,6 +138,4 @@ $main-color: #f57c00;
   border-radius: 0px;
 }
 
-.icon-item {
-  width: 45px;
-}
+

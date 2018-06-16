@@ -25,23 +25,27 @@
   				<mat-datepicker-toggle matSuffix [for]="picker" class="grey"></mat-datepicker-toggle>
   				<mat-datepicker #picker></mat-datepicker>
 			</mat-form-field>
-		</div>
+    </div>
 
 		<div class="content-item center">
-      <button class="white header-item" mat-button>Choose exercises</button>
-			<mat-form-field class="data-item">
+      <button class="white header-item exercise" mat-button>Choose exercises</button>
+
+			<mat-form-field class="data-item ex-form">
         <mat-select [(ngModel)]="exercise">
           <mat-option *ngFor="let exerciseItem of exercises"
                       color="primary" [value]="exerciseItem">
             <p class="red">{{ exerciseItem.name }}</p>
           </mat-option>
         </mat-select>
-			</mat-form-field>
-		</div>
+      </mat-form-field>
 
-  <button class="add-new-ex-btn" mat-icon-button (click)="addNewExercise()" title="add new exercise" color="accent">
-    <mat-icon svgIcon="add" class="icon-item"></mat-icon>
-  </button>
+      <button class="add-new-ex-btn" mat-icon-button (click)="addNewExercise()" title="add new exercise" color="accent">
+        <mat-icon svgIcon="add" class="icon-item"></mat-icon>
+      </button>
+
+    </div>
+
+
 
 		<div class="content-item type">
       <button class="white header-item" mat-button>Type workout</button>
@@ -51,7 +55,7 @@
             <p class="radio-btn white">{{ workoutListItem }}</p>
           </mat-radio-button>
 			</mat-radio-group>
-		</div>
+    </div>
 
 
  </div><!-- end content -->
