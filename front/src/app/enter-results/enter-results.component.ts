@@ -69,6 +69,7 @@ export class EnterResultsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.loadExerciseList();
+      this.dialogRef.close();
     });
   }
 
