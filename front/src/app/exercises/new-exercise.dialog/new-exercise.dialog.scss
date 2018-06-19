@@ -1,0 +1,22 @@
+@import "../../theme/theme";
+$main-color: #f57c00;
+
+.header-item {
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid $main-color;
+  border-radius: 0px;
+  min-width: 200px;
+  max-width: 275px;
+  padding: 1% auto;
+  margin-bottom: 20px;
+}
+
+.bottom-btn {
+  display: inline-block;
+  margin: 3% auto;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(to top, $main-color, #4c2d00, $main-color);
+  border-radius: 0px;
+}

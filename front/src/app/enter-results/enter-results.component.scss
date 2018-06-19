@@ -67,22 +67,22 @@ $main-color: #f57c00;
 
 .card-number {
   grid-area: card-number;
-  min-width: 210px;
+  max-width: 220px;
 }
 
 .actually-result {
   grid-area: actually-result;
-  min-width: 210px;
+  max-width: 220px;
 }
 
 .date {
   grid-area: date;
-  min-width: 210px;
+  max-width: 220px;
 }
 
 .center {
   grid-area: center;
-  min-width: 210px;
+  max-width: 220px;
   display: grid;
   grid-template-areas: "exercise exercise" "ex-form add-btn";
   justify-content: space-around;
@@ -98,7 +98,7 @@ $main-color: #f57c00;
 
 .type {
   grid-area: type;
-  min-width: 210px;
+  max-width: 220px;
 }
 
 .exercise {

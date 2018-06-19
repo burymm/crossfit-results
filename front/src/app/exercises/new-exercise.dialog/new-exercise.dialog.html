@@ -1,25 +1,30 @@
-<h2>New exercise</h2>
+<button class="white header-item" mat-button>New exercise</button>
+
 <div>
-  <label for="name">Exercise name</label>
-  <input type="text" id="name" name="name" [(ngModel)]="name">
+  <mat-form-field color="accent">
+    <input matInput type="text" id="name" name="name" [(ngModel)]="name" placeholder='Exercise name'>
+  </mat-form-field>
 </div>
 
 <div>
-  <label for="description">Exercise description</label>
-  <textarea type="text" id="description" name="description" [(ngModel)]="description"></textarea>
+  <mat-form-field color="accent">
+  <textarea matInput type="text" id="description" name="description" [(ngModel)]="description" placeholder="Exercise description"></textarea>
+  </mat-form-field>
 </div>
 
 <div>
-  <label for="rx-result">Exercise result for Rx version</label>
-  <input type="text" id="rx-result" name="rx-result" [(ngModel)]="result.Rx">
+  <mat-form-field color="accent">
+  <input matInput type="text" id="rx-result" name="rx-result" [(ngModel)]="result.Rx" placeholder="Exercise result for Rx version">
+  </mat-form-field>
 </div>
 
 <div>
-  <label for="sc-result">Exercise result for Sc version</label>
-  <input type="text" id="sc-result" name="sc-result" [(ngModel)]="result.Sc">
+  <mat-form-field color="accent">
+  <input matInput type="text" id="sc-result" name="sc-result" [(ngModel)]="result.Sc" placeholder="Exercise result for Sc version">
+  </mat-form-field>
 </div>
 
 <div>
-  <button (click)="onSave()">Save</button>
-  <button (click)="onCancel()">Cancel</button>
+  <button class="bottom-btn" mat-raised-button (click)="onSave()">Save</button>
+  <button class="bottom-btn" mat-raised-button (click)="onCancel()">Cancel</button>
 </div>

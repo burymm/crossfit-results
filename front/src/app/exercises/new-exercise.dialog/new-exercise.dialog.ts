@@ -2,6 +2,7 @@ import {Component, Inject} from "@angular/core";
 import {Exercise, ExResult} from "../../models/models";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {ExerciseService} from "../../services/exercise.service";
+import {EnterResultsComponent} from "../../enter-results/enter-results.component";
 
 @Component({
   selector: 'app-new-exercise',
