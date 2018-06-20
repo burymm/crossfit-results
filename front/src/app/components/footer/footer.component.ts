@@ -26,6 +26,8 @@ export class FooterComponent implements OnInit {
       sanitizer.bypassSecurityTrustResourceUrl('/assets/img/TUMBLER_icon-icons.com_65551.svg'));
     iconRegistry.addSvgIcon('rss',
       sanitizer.bypassSecurityTrustResourceUrl('/assets/img/RSS_icon-icons.com_65548.svg'));
+    iconRegistry.addSvgIcon('add',
+      sanitizer.bypassSecurityTrustResourceUrl('/assets/img/baseline-add_circle_outline-24px'));
 
   }
 
