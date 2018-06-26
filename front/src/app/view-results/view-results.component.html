@@ -10,6 +10,18 @@
     </div>
   </div>
 
+  <div class="results-table">
+    <ag-grid-angular
+      style="width: 100%; height: 500px;"
+      class="ag-theme-balham-dark"
+      [columnDefs]="columnDefs"
+      [rowData]="rowData"
+      [enableSorting]="true"
+      [enableFilter]="true"
+    >
+    </ag-grid-angular>
+  </div>
+
 
 </div> <!-- end content -->
 

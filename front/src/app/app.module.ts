@@ -54,7 +54,7 @@ import {UserResultsComponent} from "./user-results/user-results.component";
     ExercisesModule,
     MatDialogModule,
     MatIconModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([ViewResultsComponent])
   ],
   providers: [
     HttpClient,

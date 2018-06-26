@@ -56,9 +56,11 @@ export class EnterResultsComponent implements OnInit {
 		this.loadExerciseList();
 	}
 
-  onCancel() {
+  /*
+	onCancel() {
 	  this.router.navigateByUrl('results');
   }
+  */
 
   addNewExercise() {
 	  let dialogRef = this.dialog.open(NewExerciseDialog,  {
@@ -69,7 +71,6 @@ export class EnterResultsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.loadExerciseList();
-      this.dialogRef.close();
     });
   }
 
@@ -86,7 +87,7 @@ export class EnterResultsComponent implements OnInit {
   }
   */
 
-  onSaveResult() {
+  onSaveResult():void {
     this.restService.addResult({
       trainingDate: this.trainingDate,
       exerciseId: this.exercise._id,
@@ -94,8 +95,10 @@ export class EnterResultsComponent implements OnInit {
       workoutResult: this.workoutResult,
       cardNumber: this.cardNumber,
     }).subscribe((result) => {
+      this.dialogRef.close();
       console.log(result);
     });
+
   }
 
   loadExerciseList() {
