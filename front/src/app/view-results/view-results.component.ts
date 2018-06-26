@@ -8,6 +8,7 @@ import {ExerciseService} from "../services/exercise.service";
 import {Exercise} from "../models/models";
 import {Observable} from "rxjs/Observable";
 
+
 @Component({
   selector: 'app-view-results',
   templateUrl: './view-results.component.html',
@@ -17,10 +18,12 @@ export class ViewResultsComponent implements OnInit {
   results: any;
   exercises: Exercise[] = [];
 
+
+
   constructor(public dialog: MatDialog,
               private rest: RestService,
               private router: Router,
-              private exService: ExerciseService,) { }
+              private exService: ExerciseService) {}
 
   ngOnInit() {
     this.exService.getList().subscribe((list) => {
@@ -37,7 +40,6 @@ export class ViewResultsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.loadResults();
-
     });
   }
 
@@ -61,4 +63,17 @@ export class ViewResultsComponent implements OnInit {
     });
   }
 
+  columnDefs = [
+    {headerName: 'CardNumber', field: 'cardNumber'},
+    {headerName: 'Exercise', field: 'exerciseName' },
+    {headerName: 'Date', field: 'trainingDate'},
+    {headerName: 'RESULTS', field: 'res' }
+  ];
+
+  rowData = [
+    {cardNumber: 'exercise'},
+    {exerciseName: 'ex1'},
+    {trainingDate: 'date'},
+    {res: 'res'}
+  ];
 }

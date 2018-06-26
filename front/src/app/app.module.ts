@@ -52,7 +52,7 @@ import { AgGridModule } from 'ag-grid-angular';
     ExercisesModule,
     MatDialogModule,
     MatIconModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([ViewResultsComponent])
   ],
   providers: [
     HttpClient,
