@@ -3,54 +3,36 @@ import { RestService } from '../services/rest.service';
 import { assign, map, first, filter, isNil } from 'lodash';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from "@angular/material";
-import {EnterResultsComponent} from "../enter-results/enter-results.component";
 import {ExerciseService} from "../services/exercise.service";
-import {Exercise} from "../models/models";
-import {Observable} from "rxjs/Observable";
+import {Exercise, ID} from "../models/models";
 
 @Component({
-  selector: 'app-view-results',
-  templateUrl: './view-results.component.html',
-  styleUrls: ['./view-results.component.scss']
+  selector: 'app-user-results',
+  templateUrl: './user-results.component.html',
+  styleUrls: ['./user-results.component.scss']
 })
-export class ViewResultsComponent implements OnInit {
+export class UserResultsComponent implements OnInit {
   results: any;
   exercises: Exercise[] = [];
+  userId: ID;
 
   constructor(public dialog: MatDialog,
               private rest: RestService,
               private router: Router,
-              private exService: ExerciseService) { }
+              private exService: ExerciseService,
+              private route: ActivatedRoute) {
+    this.route.params.subscribe(params => this.userId = params.cardNumber);
+  }
 
   ngOnInit() {
-   this.exService.getList().subscribe((list) => {
+    this.exService.getList().subscribe((list) => {
       this.exercises = list;
       this.loadResults();
     })
   }
 
-  onAddResultClick() {
-    let dialogRef = this.dialog.open(EnterResultsComponent,  {
-      width: '90%',
-      data: { }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.loadResults();
-
-    });
-  }
-
-  showUserResult(cardNumber: string) {
-    if (!cardNumber) {
-      return;
-    }
-
-    this.router.navigate([`/results/`, cardNumber]);
-  }
-
   private loadResults() {
-    return this.rest.getResults().subscribe((results) => {
+    return this.rest.getUserResults(this.userId).subscribe((results) => {
       assign(this, { results: this.mapResults(results) });
     });
   }

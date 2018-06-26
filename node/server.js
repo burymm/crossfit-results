@@ -91,9 +91,8 @@ const server = http.createServer((req, res) => {
               res.end(JSON.stringify(result));
             });
             break;
-            break;
           default:
-            var mimeTypes = {
+            const mimeTypes = {
               "html": "text/html",
               "jpeg": "image/jpeg",
               "jpg": "image/jpeg",
@@ -103,8 +102,8 @@ const server = http.createServer((req, res) => {
               "css": "text/css"};
 
 
-            var uri = url.parse(req.url).pathname;
-            var filename = path.join(process.cwd(), uri);
+            const uri = url.parse(req.url).pathname;
+            const filename = path.join(process.cwd(), uri);
             fs.exists(filename, function(exists) {
               if(!exists) {
                 console.log("not exists: " + filename);
@@ -115,10 +114,10 @@ const server = http.createServer((req, res) => {
               }
 
               setHeaders(res);
-              var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
+              const mimeType = mimeTypes[path.extname(filename).split(".")[1]];
               res.writeHead(200, {'Content-Type':mimeType});
 
-              var fileStream = fs.createReadStream(filename);
+              const fileStream = fs.createReadStream(filename);
               fileStream.pipe(res);
 
               fileStream.on('data', function (data) {
@@ -128,12 +127,7 @@ const server = http.createServer((req, res) => {
                 res.end();
               });
 
-            }); //end path.exists
-
-
-            /*res.statusCode = 200;
-            res.setHeader('Content-Type', 'text/plain');
-            res.end('Hello World\n');*/
+            });
             break;
         }
         break;

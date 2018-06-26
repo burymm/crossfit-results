@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { WorkoutResult } from '../models/models';
+import {ID, WorkoutResult} from '../models/models';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -12,6 +12,10 @@ export class ResultsService {
 
   getResults() {
     return this.http.get(`/results`);
+  }
+
+  getUserResults(userId: ID) {
+    return this.http.get(`/results/${userId}`);
   }
 
   addResult(result: WorkoutResult) {

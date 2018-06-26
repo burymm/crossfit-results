@@ -24,7 +24,7 @@ export class EnterResultsComponent implements OnInit {
 
   Users = [];
 
-  trainingDate: Date;
+  trainingDate: Date = new Date();
   exercise: Exercise;
   workoutType: Workout = Workout.Rx;
   workoutResult: number;

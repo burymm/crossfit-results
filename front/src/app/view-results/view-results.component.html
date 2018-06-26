@@ -6,7 +6,7 @@
   <div class="table-results">
 
     <div *ngFor="let result of results">
-      {{ result | json }}
+      <button (click)="showUserResult(result.cardNumber)">view user results</button> <span>{{ result | json }}</span>
     </div>
   </div>
 

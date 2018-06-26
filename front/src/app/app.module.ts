@@ -25,6 +25,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { AgGridModule } from 'ag-grid-angular';
+import {UserResultsComponent} from "./user-results/user-results.component";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AgGridModule } from 'ag-grid-angular';
     ViewResultsComponent,
     HeaderComponent,
     FooterComponent,
+    UserResultsComponent,
   ],
   imports: [
     BrowserModule,
