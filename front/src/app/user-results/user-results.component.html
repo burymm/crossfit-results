@@ -1,5 +1,24 @@
 <app-header></app-header>
 
-<h2>User results</h2>
+<div class="content">
+
+  <mat-form-field class="data-item ex-form">
+    <mat-select [(ngModel)]="exerciseItem">
+      <mat-option *ngFor="let exerciseItem of exercises"
+                  color="primary" [value]="exerciseItem">
+        <p class="red">{{ exerciseItem.name }}</p>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button (click)="filterData()">Filter</button>
+
+  <h2>User results</h2>
+
+  <div class="table-results">
+    {{ results | json }}
+  </div>
+
+</div>
 
 <app-footer></app-footer>

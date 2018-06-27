@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {UsersService} from "./users.service";
 import { ResultsService } from './results.service';
-import {ID, WorkoutResult} from '../models/models';
+import {ExerciseFilter, ID, WorkoutResult} from '../models/models';
 
 
 @Injectable()
@@ -20,8 +20,8 @@ export class RestService {
     return this.resultsService.getResults();
   }
 
-  getUserResults(userId: ID) {
-    return this.resultsService.getUserResults(userId);
+  getUserResults(userId: ID, filter?: ExerciseFilter) {
+    return this.resultsService.getUserResults(userId, filter);
   }
 
   addResult(result: WorkoutResult) {

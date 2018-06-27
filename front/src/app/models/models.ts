@@ -1,6 +1,10 @@
 export enum Workout { Rx = 'Rx', Sc = 'Scalable' }
 export type ID = string;
 
+export type ExerciseFilter = {
+  exerciseId?: ID;
+}
+
 export type ExResult = {
   Rx: number;
   Sc: number;
@@ -12,6 +16,7 @@ export type Exercise = {
   result: ExResult;
   description?: string;
 };
+
 export type WorkoutResult = {
   cardNumber: string;
   trainingDate: Date;

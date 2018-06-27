@@ -109,6 +109,22 @@ app.get('/results', function (req, res) {
   });
 });
 
+app.get('/results/:cardNumber', function (req, res) {
+  db.collection('results').find({
+    'cardNumber': req.params.cardNumber,
+    'exerciseId': req.query && req.query.exerciseId,
+  }).toArray(function(err, result) {
+
+    if (err) {
+      res.statusCode = 404;
+      res.end(JSON.stringify(err));
+      return;
+    }
+    res.statusCode = 200;
+    res.end(JSON.stringify(result));
+  });
+});
+
 app.listen(port, function() {
   console.log(`Server running at ${port} port`);
 });

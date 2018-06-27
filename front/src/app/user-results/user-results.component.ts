@@ -13,6 +13,7 @@ import {Exercise, ID} from "../models/models";
 })
 export class UserResultsComponent implements OnInit {
   results: any;
+  exerciseItem: Exercise;
   exercises: Exercise[] = [];
   userId: ID;
 
@@ -31,8 +32,14 @@ export class UserResultsComponent implements OnInit {
     })
   }
 
+  filterData() {
+    this.loadResults();
+  }
+
   private loadResults() {
-    return this.rest.getUserResults(this.userId).subscribe((results) => {
+    return this.rest.getUserResults(this.userId, {
+      exerciseId: this.exerciseItem && this.exerciseItem._id,
+    }).subscribe((results) => {
       assign(this, { results: this.mapResults(results) });
     });
   }
