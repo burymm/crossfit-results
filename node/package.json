@@ -10,7 +10,11 @@
   "author": "burymm",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "mongodb": "^3.0.7",
     "nodemon": "^1.17.3"
+  },
+  "devDependencies": {
+    "express": "^4.16.3"
   }
 }
