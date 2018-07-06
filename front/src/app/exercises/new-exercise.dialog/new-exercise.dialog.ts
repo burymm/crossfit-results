@@ -6,16 +6,6 @@ import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 
-export interface ExGroup {
-  letter: string;
-  names: string[];
-}
-
-export const _filter = (opt: string[], value: string): string[] => {
-  const filterValue = value.toLowerCase();
-
-  return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
-};
 
 
 @Component({
@@ -25,59 +15,34 @@ export const _filter = (opt: string[], value: string): string[] => {
 })
 
 export class NewExerciseDialog implements OnInit {
-  
-  exForm: FormGroup = this.fb.group({
-    exGroup: '',
-  });
+  myControl = new FormControl();
+  exNames: string[] = ['Burpee', 'Ball Slam', 'Deadlift', 'Jump Rope', 'Pull-ups', 'Running', 'Sit-ups'];
+  filteredExNames: Observable<string[]>;
+
   name: string;
   description: string;
   result: ExResult = {
     Sc: 0,
     Rx: 0,
   };
-  exGroups: ExGroup[] = [{
-    letter: 'B',
-    names: ['Burpee', 'Ball Slam']
-  }, {
-    letter: 'D',
-    names: ['Deadlift']
-  }, {
-    letter: 'J',
-    names: ['Jump Rope']
-  }, {
-    letter: 'P',
-    names: ['Pull-ups']
-  }, {
-    letter: 'R',
-    names: ['Running']
-  }, {
-    letter: 'S',
-    names: ['Sit-ups']
-  }];
-
-  exGroupOptions: Observable<ExGroup[]>;
-
+    
   constructor( public dialogRef: MatDialogRef<NewExerciseDialog>,
                @Inject(MAT_DIALOG_DATA) public data: any,
                private rest: ExerciseService,
                private fb: FormBuilder) {}
 
 ngOnInit() {
-this.exGroupOptions = this.exForm.get('exGroup')!.valueChanges
-  .pipe(
+  this.filteredExNames = this.myControl.valueChanges
+    .pipe(
     startWith(''),
-    map(value => this._filterGroup(value))
+    map(value => this._filter(value))
   );
 }
 
-private _filterGroup(value: string): ExGroup[] {
-    if (value) {
-      return this.exGroups
-        .map(group => ({letter: group.letter, names: _filter(group.names, value)}))
-        .filter(group => group.names.length > 0);
-    }
+private _filter(value: string): string[] {
+  const filterValue = value.toLowerCase();
 
-    return this.exGroups;
+  return this.exNames.filter(exName => exName.toLowerCase().indexOf(filterValue) === 0);
 }
 
   onSave():void {

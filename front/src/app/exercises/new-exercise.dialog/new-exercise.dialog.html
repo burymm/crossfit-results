@@ -13,24 +13,18 @@
     </mat-form-field>
   </div> -->
 
+
   <div>
-    <form [formGroup]="exForm">
+    <form>
       <mat-form-field>
         <input type="text" 
-               matInput placeholder="Exercise name" 
-               formControlName="exGroup" 
-               required 
-               [matAutocomplete]="autoGroup"
-               [(ngModel)]="name">
-          <mat-autocomplete #autoGroup="matAutocomplete">
-            <mat-optgroup *ngFor="let group of exGroupOptions | async" 
-                          [label]="group.letter">
-              <mat-option *ngFor="let name of group.names" 
-                          [value]="name" 
-                          class="red">
-                {{name}}
-              </mat-option>
-          </mat-optgroup>
+               placeholder="Exercise name"
+               matInput [formControl]="myControl" 
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let exName of filteredExNames | async" [value]="exName" class="red">
+            {{exName}}
+          </mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </form>
