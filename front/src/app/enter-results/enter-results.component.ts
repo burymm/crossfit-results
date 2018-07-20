@@ -11,6 +11,9 @@ import {ExerciseService} from "../services/exercise.service";
 import { MatIconRegistry } from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
 import {MAT_DIALOG_DATA} from "@angular/material";
+import {FormControl} from "@angular/forms";
+import {startWith, map} from "rxjs/operators";
+import {Observable} from "rxjs/Observable";
 
 
 
@@ -29,7 +32,9 @@ export class EnterResultsComponent implements OnInit {
   workoutType: Workout = Workout.Rx;
   workoutResult: number;
   cardNumber: string;
-  exercises: Exercise[] = [];
+  exercises: Exercise[];
+  filteredExercises: Observable<Exercise[]>;
+  exerciseControl = new FormControl();
 
 	constructor(public dialog: MatDialog,
 	            private router: Router,
@@ -104,7 +109,24 @@ export class EnterResultsComponent implements OnInit {
   loadExerciseList() {
     this.exService.getList().subscribe((list) => {
       this.exercises = list;
+  
+      this.filteredExercises = this.exerciseControl.valueChanges
+        .pipe(
+          startWith<string | Exercise>(''),
+          map(value => typeof value === 'string' ? value : value.name),
+          map(name => name ? this._filter(name) : this.exercises)
+        );
     });
+  }
+  
+  onExerciseChange(exercise: Exercise) {
+    this.exercise = exercise;
+  }
+  
+  private _filter(name: string): Exercise[] {
+    const filterValue = name.toLowerCase();
+    
+    return this.exercises.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
   /*

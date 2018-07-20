@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Credentials", false);
   res.setHeader("Access-Control-Max-Age", '86400'); // 24 hours
-  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-XSRF-TOKEN");
   res.setHeader('Content-Type', 'application/json');
   next();
 });
@@ -110,11 +110,17 @@ app.get('/results', function (req, res) {
 });
 
 app.get('/results/:cardNumber', function (req, res) {
-  db.collection('results').find({
-    'cardNumber': req.params.cardNumber,
-    'exerciseId': req.query && req.query.exerciseId,
-  }).toArray(function(err, result) {
-
+  const params = {};
+  
+  if (req.params && req.params.cardNumber) {
+    params.cardNumber = req.params.cardNumber;
+  }
+  
+  if (req.query && req.query.exerciseId) {
+    params.exerciseId = req.query.exerciseId;
+  }
+  
+  db.collection('results').find(params).toArray(function(err, result) {
     if (err) {
       res.statusCode = 404;
       res.end(JSON.stringify(err));

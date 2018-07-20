@@ -30,14 +30,20 @@
 		<div class="content-item center">
       <button class="white header-item exercise" mat-button>Choose exercises</button>
 
-			<mat-form-field class="data-item ex-form">
-        <mat-select [(ngModel)]="exercise">
-          <mat-option *ngFor="let exerciseItem of exercises"
-                      color="primary" [value]="exerciseItem">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput
+               [formControl]="exerciseControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let exerciseItem of filteredExercises | async"
+                      [value]="exerciseItem.name"
+                      (onSelectionChange)="onExerciseChange(exerciseItem)">
             <p class="red">{{ exerciseItem.name }}</p>
           </mat-option>
-        </mat-select>
+        </mat-autocomplete>
       </mat-form-field>
+
+
+
 
       <button class="add-new-ex-btn" mat-icon-button (click)="addNewExercise()" title="add new exercise" color="accent">
         <mat-icon svgIcon="add" class="icon-item"></mat-icon>

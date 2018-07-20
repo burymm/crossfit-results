@@ -12,13 +12,13 @@ import { AppComponent } from './app.component';
 import { EnterResultsComponent } from './enter-results/enter-results.component';
 import { ViewResultsComponent } from './view-results/view-results.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { MatNativeDateModule } from "@angular/material";
+import {MatAutocompleteModule, MatFormFieldModule, MatNativeDateModule} from "@angular/material";
 import {HeaderComponent} from "./components/header/header.component";
 import { UsersService } from './services/users.service';
 import { RestService } from './services/rest.service';
 import { ResultsService } from './services/results.service';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ExercisesModule} from "./exercises/exercises.module";
 import {RequestInterceptor} from "./services/request-interceptor";
 import { FooterComponent } from './components/footer/footer.component';
@@ -54,6 +54,9 @@ import {UserResultsComponent} from "./user-results/user-results.component";
     ExercisesModule,
     MatDialogModule,
     MatIconModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     AgGridModule.withComponents([ViewResultsComponent])
   ],
   providers: [
