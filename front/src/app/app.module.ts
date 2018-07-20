@@ -28,6 +28,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import {UserResultsComponent} from "./user-results/user-results.component";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,12 +36,13 @@ import {UserResultsComponent} from "./user-results/user-results.component";
     ViewResultsComponent,
     HeaderComponent,
     FooterComponent,
-    UserResultsComponent,
+    UserResultsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    FormsModule,
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
@@ -50,7 +52,6 @@ import {UserResultsComponent} from "./user-results/user-results.component";
     AppRoutingModule,
     MatNativeDateModule,
     HttpClientModule,
-    FormsModule,
     ExercisesModule,
     MatDialogModule,
     MatIconModule,

@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { User } from  "../user"
 import { UsersService } from '../services/users.service';
 import { RestService } from '../services/rest.service';
 import { Exercise, Workout } from '../models/models';
@@ -24,6 +23,7 @@ import {Observable} from "rxjs/Observable";
 })
 
 export class EnterResultsComponent implements OnInit {
+  
 
   Users = [];
 

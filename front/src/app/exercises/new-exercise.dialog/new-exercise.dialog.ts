@@ -1,7 +1,12 @@
-import {Component, Inject} from "@angular/core";
+import {Component, Inject, OnInit} from '@angular/core';
 import {Exercise, ExResult} from "../../models/models";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {ExerciseService} from "../../services/exercise.service";
+import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {startWith, map} from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-new-exercise',
@@ -9,17 +14,36 @@ import {ExerciseService} from "../../services/exercise.service";
   styleUrls: ['./new-exercise.dialog.scss']
 })
 
-export class NewExerciseDialog {
+export class NewExerciseDialog implements OnInit {
+  myControl = new FormControl();
+  exNames: string[] = ['Burpee', 'Ball Slam', 'Deadlift', 'Jump Rope', 'Pull-ups', 'Running', 'Sit-ups'];
+  filteredExNames: Observable<string[]>;
+
   name: string;
   description: string;
   result: ExResult = {
     Sc: 0,
     Rx: 0,
   };
-
+    
   constructor( public dialogRef: MatDialogRef<NewExerciseDialog>,
                @Inject(MAT_DIALOG_DATA) public data: any,
-               private rest: ExerciseService) {}
+               private rest: ExerciseService,
+               private fb: FormBuilder) {}
+
+ngOnInit() {
+  this.filteredExNames = this.myControl.valueChanges
+    .pipe(
+    startWith(''),
+    map(value => this._filter(value))
+  );
+}
+
+private _filter(value: string): string[] {
+  const filterValue = value.toLowerCase();
+
+  return this.exNames.filter(exName => exName.toLowerCase().indexOf(filterValue) === 0);
+}
 
   onSave():void {
     this.rest.add({
@@ -35,4 +59,5 @@ export class NewExerciseDialog {
   onCancel():void {
     this.dialogRef.close();
   }
+  
 }
