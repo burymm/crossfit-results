@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Exercise, ExResult} from "../../models/models";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {ExerciseService} from "../../services/exercise.service";
-import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 
@@ -15,39 +15,54 @@ import {startWith, map} from 'rxjs/operators';
 })
 
 export class NewExerciseDialog implements OnInit {
-  myControl = new FormControl();
-  exNames: string[] = ['Burpee', 'Ball Slam', 'Deadlift', 'Jump Rope', 'Pull-ups', 'Running', 'Sit-ups'];
-  filteredExNames: Observable<string[]>;
 
-  name: string;
+  // name: string;
   description: string;
   result: ExResult = {
     Sc: 0,
     Rx: 0,
   };
-    
+
+  myControl = new FormControl();
+  //exNames: string[] = ['Burpee', 'Ball Slam', 'Deadlift', 'Jump Rope', 'Pull-ups', 'Running', 'Sit-ups'];
+  exercise: Exercise;
+  exNames: Exercise[];
+  filteredExNames: Observable<Exercise[]>;
+
   constructor( public dialogRef: MatDialogRef<NewExerciseDialog>,
                @Inject(MAT_DIALOG_DATA) public data: any,
-               private rest: ExerciseService,
-               private fb: FormBuilder) {}
+               private rest: ExerciseService) {}
 
 ngOnInit() {
-  this.filteredExNames = this.myControl.valueChanges
-    .pipe(
-    startWith(''),
-    map(value => this._filter(value))
-  );
+    this.loadExList();
+  // this.filteredExNames = this.myControl.valueChanges
+  //   .pipe(
+  //   startWith(''),
+  //   map(value => this._filter(value))
+  // );
 }
 
-private _filter(value: string): string[] {
-  const filterValue = value.toLowerCase();
+  loadExList() {
+    this.rest.getList().subscribe((list) => {
+      this.exNames = list;
 
-  return this.exNames.filter(exName => exName.toLowerCase().indexOf(filterValue) === 0);
+      this.filteredExNames = this.myControl.valueChanges
+        .pipe(
+          startWith<string | Exercise>(''),
+          map(value => typeof value === 'string' ? value : value.name),
+          map(name => name ? this._filter(name) : this.exNames)
+        );
+    });
+  }
+
+private _filter(name: string): Exercise[] {
+  const filterValue = name.toLowerCase();
+  return this.exNames.filter(exName => exName.name.toLowerCase().includes(filterValue));
 }
 
   onSave():void {
     this.rest.add({
-      name: this.name,
+      name: this.exercise.name,
       description: this.description,
       result: this.result,
       _id: void 0,
@@ -59,5 +74,5 @@ private _filter(value: string): string[] {
   onCancel():void {
     this.dialogRef.close();
   }
-  
+
 }
