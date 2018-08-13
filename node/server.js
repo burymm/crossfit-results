@@ -3,7 +3,8 @@ const url = require('url');
 const path = require('path');
 const fs = require('fs');
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const moment = require('moment');
 
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
@@ -17,6 +18,9 @@ const dbConfig = {
 };
 
 const port = 3000;
+
+
+const AVERAGE_CARD_NUMBER = 'average';
 
 let data = [];
 let db;
@@ -79,20 +83,83 @@ app.post('/exercises', function (req, res) {
   });
 });
 
+function getAverage(array) {
+  let sum = 0;
+  let count = 0;
+  
+  array.forEach((item) => {
+    if (item.cardNumber !== AVERAGE_CARD_NUMBER) {
+      sum += parseInt(item.workoutResult);
+      count += 1;
+    }
+  });
+  
+  return Math.round(sum / count * 10) / 10;
+}
+
+function updateExerciseAverageValue(record) {
+  const trainingDate = moment(record.trainingDate).format('YYYY-MM-DD');
+  
+  db.collection('results').find({
+    trainingDate,
+    exerciseId: record.exerciseId,
+  }).toArray(function(err, result) {
+    if (result) {
+      let average = result.filter((item) => item.cardNumber === AVERAGE_CARD_NUMBER)[0];
+      if (!average) {
+        average = {
+          trainingDate,
+          exerciseId: record.exerciseId,
+          workoutType: record.workoutType,
+          cardNumber: AVERAGE_CARD_NUMBER,
+          workoutResult: getAverage(result),
+        };
+        db.collection('results').insert(average, (err, results) => {
+          if (err) {
+            res.statusCode = 300;
+            res.end('Can\'t save data to database');
+            return;
+          }
+          
+          record.average = average;
+          res.statusCode = 200;
+          res.end(JSON.stringify(record));
+        });
+      } else {
+        average.workoutResult = getAverage(result);
+        db.collection('results').update({ _id: average._id },
+          average,
+          (err) => {
+            if (err) {
+              res.statusCode = 300;
+              res.end('Can\'t save data to database');
+              return;
+            }
+            
+            record.average = average;
+            res.statusCode = 200;
+            res.end(JSON.stringify(record));
+          });
+      }
+    }
+  });
+}
+
 app.post('/results', function (req, res) {
   const record = req.body;
-
-  db.collection('results').insert(record, (err, results) => {
+  const trainingDate = moment(record.trainingDate).format('YYYY-MM-DD');
+  
+  db.collection('results').insert({
+    ...record,
+    trainingDate,
+  },
+  (err, results) => {
     if (err) {
       res.statusCode = 300;
       res.end('Can\'t save data to database');
       return;
     }
-
-    data.push(record);
-    res.statusCode = 200;
-
-    res.end(JSON.stringify(record));
+    updateExerciseAverageValue(record);
   });
 });
 
