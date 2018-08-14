@@ -3,13 +3,18 @@
 
   <div class="content-item card-number">
     <mat-form-field color="accent">
-      <input matInput [(ngModel)]="cardNumber" placeholder="User card number">
+      <input matInput [(ngModel)]="cardNumber"
+             placeholder="User card number"
+             required>
     </mat-form-field>
   </div>
 
   <div class="content-item actually-result">
     <mat-form-field color="accent">
-      <input matInput [(ngModel)]="workoutResult" placeholder="Result">
+      <input matInput
+             [(ngModel)]="workoutResult"
+             placeholder="Result"
+             required>
     </mat-form-field>
   </div>
 
@@ -17,10 +22,12 @@
 		<div class="content-item date">
       <button class="white header-item" mat-button>Choose a date</button>
       <mat-form-field color="accent" class="data-item">
-  				<input matInput [matDatepicker]="picker"
+  				<input matInput
+                 [matDatepicker]="picker"
                  placeholder="Choose a date"
                  class="grey"
                  [(ngModel)]="trainingDate"
+                 required
           >
   				<mat-datepicker-toggle matSuffix [for]="picker" class="grey"></mat-datepicker-toggle>
   				<mat-datepicker #picker></mat-datepicker>
@@ -31,13 +38,19 @@
       <button class="white header-item exercise" mat-button>Choose exercises</button>
 
       <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Pick one" aria-label="Number" matInput
-               [formControl]="exerciseControl" [matAutocomplete]="auto">
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               [formControl]="exerciseControl"
+               [matAutocomplete]="auto"
+               required>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let exerciseItem of filteredExercises | async"
                       [value]="exerciseItem.name"
-                      (onSelectionChange)="onExerciseChange(exerciseItem)">
-            <p class="red">{{ exerciseItem.name }}</p>
+                      (onSelectionChange)="onExerciseChange(exerciseItem)"
+                      class="red">
+            {{ exerciseItem.name }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -45,7 +58,11 @@
 
 
 
-      <button class="add-new-ex-btn" mat-icon-button (click)="addNewExercise()" title="add new exercise" color="accent">
+      <button class="add-new-ex-btn"
+              mat-icon-button
+              (click)="addNewExercise()"
+              title="add new exercise"
+              color="accent">
         <mat-icon svgIcon="add" class="icon-item"></mat-icon>
       </button>
 
@@ -56,7 +73,8 @@
 		<div class="content-item type">
       <button class="white header-item" mat-button>Type workout</button>
       <mat-radio-group [(ngModel)]="workoutType" class="data-item">
-	  			<mat-radio-button *ngFor="let workoutListItem of workoutList" color="accent" name="workoutType"
+	  			<mat-radio-button *ngFor="let workoutListItem of workoutList"
+                            color="accent" name="workoutType"
                             [value]="workoutListItem">
             <p class="radio-btn white">{{ workoutListItem }}</p>
           </mat-radio-button>
@@ -68,7 +86,9 @@
 
 
 
-<button class="white enter-btn" mat-raised-button (click)="onSaveResult()">enter your result</button>
+<button class="white enter-btn"
+        mat-raised-button
+        (click)="onSaveResult()">enter your result</button>
 
 
 

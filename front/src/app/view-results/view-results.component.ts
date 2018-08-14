@@ -71,17 +71,4 @@ export class ViewResultsComponent implements OnInit {
     });
   }
 
-  columnDefs = [
-    {headerName: 'CardNumber', field: 'cardNumber'},
-    {headerName: 'Exercise', field: 'exerciseName' },
-    {headerName: 'Date', field: 'trainingDate'},
-    {headerName: 'RESULTS', field: 'res' }
-  ];
-
-  rowData = [
-    {cardNumber: 'exercise'},
-    {exerciseName: 'ex1'},
-    {trainingDate: 'date'},
-    {res: 'res'}
-  ];
 }

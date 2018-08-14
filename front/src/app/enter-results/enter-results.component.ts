@@ -23,7 +23,7 @@ import {Observable} from "rxjs/Observable";
 })
 
 export class EnterResultsComponent implements OnInit {
-  
+
 
   Users = [];
 
@@ -109,7 +109,7 @@ export class EnterResultsComponent implements OnInit {
   loadExerciseList() {
     this.exService.getList().subscribe((list) => {
       this.exercises = list;
-  
+
       this.filteredExercises = this.exerciseControl.valueChanges
         .pipe(
           startWith<string | Exercise>(''),
@@ -118,14 +118,14 @@ export class EnterResultsComponent implements OnInit {
         );
     });
   }
-  
+
   onExerciseChange(exercise: Exercise) {
     this.exercise = exercise;
   }
-  
+
   private _filter(name: string): Exercise[] {
     const filterValue = name.toLowerCase();
-    
+
     return this.exercises.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 

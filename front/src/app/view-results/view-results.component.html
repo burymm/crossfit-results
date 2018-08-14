@@ -5,25 +5,14 @@
 
   <input type="text">
 
-  <div class="table-results">
+  <!--<div class="table-results">-->
 
-    <div *ngFor="let result of results">
-      <button (click)="showUserResult(result.cardNumber)">view user results</button> <span>{{ result | json }}</span>
-    </div>
-  </div>
+    <!--<div *ngFor="let result of results">-->
+      <!--<button (click)="showUserResult(result.cardNumber)">view user results</button> <span>{{ result | json }}</span>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="results-table">
-    <ag-grid-angular
-      style="width: 100%; height: 500px;"
-      class="ag-theme-balham-dark"
-      [columnDefs]="columnDefs"
-      [rowData]="rowData"
-      [enableSorting]="true"
-      [enableFilter]="true"
-    >
-    </ag-grid-angular>
-  </div>
-
+<app-ag-grid></app-ag-grid>
 
 </div> <!-- end content -->
 
