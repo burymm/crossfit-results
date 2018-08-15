@@ -13,7 +13,7 @@ export class AgGridComponent implements OnInit {
   columnDefs = [
     {headerName: 'Date', field: 'trainingDate', minWidth: 50},
     {headerName: 'Card Number', field: 'cardNumber', minWidth: 50 },
-    {headerName: 'Exercise', field: 'exercise', minWidth: 50},
+    {headerName: 'Exercise', field: 'exerciseName', minWidth: 50},
     {headerName: 'Result', field: 'workoutResult', minWidth: 50}
   ];
 

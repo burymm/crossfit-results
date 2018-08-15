@@ -20,7 +20,7 @@
         <input type="text"
                placeholder="Exercise name"
                matInput
-               [formControl]="myControl"
+               [formControl]="exerciseName"
                [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           <mat-option *ngFor="let exName of filteredExNames | async" [value]="exName.name" class="red">

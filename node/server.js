@@ -97,7 +97,7 @@ function getAverage(array) {
   return Math.round(sum / count * 10) / 10;
 }
 
-function updateExerciseAverageValue(record) {
+function updateExerciseAverageValue(res, record) {
   const trainingDate = moment(record.trainingDate).format('YYYY-MM-DD');
   
   db.collection('results').find({
@@ -159,13 +159,45 @@ app.post('/results', function (req, res) {
       res.end('Can\'t save data to database');
       return;
     }
-    updateExerciseAverageValue(record);
+    updateExerciseAverageValue(res, record);
   });
 });
 
 app.get('/results', function (req, res) {
-  db.collection('results').find({}).toArray(function(err, result) {
-
+  db.collection('results').aggregate([
+  {
+    "$project": {
+      "_id": {
+        $toString: "$_id"
+      },
+      trainingDate: true,
+      cardNumber: true,
+      workoutResult: true,
+      exercise: true
+    },
+  }, {
+    $lookup: {
+      from: 'exercises',
+      localField: 'exerciseId',
+      foreignField: 'exerciseId'.valueOf(),
+      as: 'exercise',
+    }
+  }, {
+    $project: {
+      trainingDate: true,
+      cardNumber: true,
+      workoutResult: true,
+      exercise: { $arrayElemAt: [ "$exercise", 0 ] },
+    }
+  }, {
+    $project: {
+      trainingDate: true,
+      cardNumber: true,
+      workoutResult: true,
+      exerciseName: "$exercise.name",
+    }
+  }
+]).toArray((err, result) => {
     if (err) {
       res.statusCode = 404;
       res.end(JSON.stringify(err));

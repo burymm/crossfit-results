@@ -22,8 +22,8 @@ export class NewExerciseDialog implements OnInit {
     Sc: 0,
     Rx: 0,
   };
-
-  myControl = new FormControl();
+  
+  exerciseName = new FormControl();
   //exNames: string[] = ['Burpee', 'Ball Slam', 'Deadlift', 'Jump Rope', 'Pull-ups', 'Running', 'Sit-ups'];
   exercise: Exercise;
   exNames: Exercise[];
@@ -62,7 +62,7 @@ private _filter(name: string): Exercise[] {
 
   onSave():void {
     this.rest.add({
-      name: this.exercise.name,
+      name: this.exerciseName.value,
       description: this.description,
       result: this.result,
       _id: void 0,
