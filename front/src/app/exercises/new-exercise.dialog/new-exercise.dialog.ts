@@ -22,7 +22,7 @@ export class NewExerciseDialog implements OnInit {
     Sc: 0,
     Rx: 0,
   };
-  
+
   exerciseName = new FormControl();
   //exNames: string[] = ['Burpee', 'Ball Slam', 'Deadlift', 'Jump Rope', 'Pull-ups', 'Running', 'Sit-ups'];
   exercise: Exercise;
@@ -46,7 +46,7 @@ ngOnInit() {
     this.rest.getList().subscribe((list) => {
       this.exNames = list;
 
-      this.filteredExNames = this.myControl.valueChanges
+      this.filteredExNames = this.exerciseName.valueChanges
         .pipe(
           startWith<string | Exercise>(''),
           map(value => typeof value === 'string' ? value : value.name),
