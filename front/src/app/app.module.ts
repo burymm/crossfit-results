@@ -26,7 +26,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { AgGridModule } from 'ag-grid-angular';
 import {UserResultsComponent} from "./user-results/user-results.component";
-import { AgGridComponent } from './ag-grid/ag-grid.component';
 
 
 
@@ -38,7 +37,7 @@ import { AgGridComponent } from './ag-grid/ag-grid.component';
     HeaderComponent,
     FooterComponent,
     UserResultsComponent,
-    AgGridComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -60,7 +59,7 @@ import { AgGridComponent } from './ag-grid/ag-grid.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    AgGridModule.withComponents([AgGridComponent])
+    AgGridModule.withComponents([ViewResultsComponent])
   ],
   providers: [
     HttpClient,
