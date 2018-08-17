@@ -27,8 +27,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { AgGridModule } from 'ag-grid-angular';
 import {UserResultsComponent} from "./user-results/user-results.component";
 import { AgGridComponent } from './ag-grid/ag-grid.component';
-
-
+import { LoginComponent } from "./unathorize/login/login.component";
+import { AuthService } from "./services/auth.service";
+import { UserService } from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AgGridComponent } from './ag-grid/ag-grid.component';
     HeaderComponent,
     FooterComponent,
     UserResultsComponent,
-    AgGridComponent
+    AgGridComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,8 @@ import { AgGridComponent } from './ag-grid/ag-grid.component';
     UsersService,
     RestService,
     ResultsService,
+    AuthService,
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,

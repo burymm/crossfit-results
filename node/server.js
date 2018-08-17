@@ -5,6 +5,7 @@ const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const moment = require('moment');
+const { google } = require('googleapis');
 
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
@@ -21,6 +22,18 @@ const port = 3000;
 
 
 const AVERAGE_CARD_NUMBER = 'average';
+
+const oauth2Client = new google.auth.OAuth2(
+  '40421314935-dv7j9srrkesqgmmv2rtilimocklfe7e6.apps.googleusercontent.com',
+  'NVCsNakLbS0p62WgDI9eLOWa',
+  'localhost:4200/user'
+);
+
+const scopes = [
+  'https://www.googleapis.com/auth/plus.me',
+  'https://www.googleapis.com/auth/calendar'
+];
+
 
 let data = [];
 let db;
@@ -81,6 +94,33 @@ app.post('/exercises', function (req, res) {
 
     res.end(JSON.stringify(record));
   });
+});
+
+app.post('/googleAuth', function (req, res) {
+  const token = req.body.token;
+  
+  if (!token) {
+    res.statusCode = 400;
+    res.end('token is unavailable');
+    return;
+  }
+  
+  oauth2Client.setCredentials({access_token: token});
+  const oauth2 = google.oauth2({
+    auth: oauth2Client,
+    version: 'v2'
+  });
+  oauth2.userinfo.get(
+    function(error, response) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('client info', response.data);
+        res.statusCode = 200;
+  
+        res.end(JSON.stringify(response.data));
+      }
+    });
 });
 
 function getAverage(array) {

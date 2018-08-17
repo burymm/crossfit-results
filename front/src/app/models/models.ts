@@ -26,3 +26,10 @@ export type WorkoutResult = {
   comment?: string;
 };
 
+export type UserProfile = {
+  name: string;
+  email: string;
+  picture: string;
+  id: string;
+}
+

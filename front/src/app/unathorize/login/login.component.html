@@ -1,0 +1,40 @@
+<div class="content">
+
+  <h2>Authorize page</h2>
+  <div class="content-item">
+    <mat-form-field color="accent">
+      <input matInput [(ngModel)]="login"
+             placeholder="User login"
+             required>
+    </mat-form-field>
+  </div>
+
+  <div class="content-item">
+    <mat-form-field color="accent">
+      <input matInput
+             [(ngModel)]="password"
+             type="password"
+             placeholder="Password"
+             required>
+    </mat-form-field>
+  </div>
+
+  <button class="add-new-ex-btn"
+          mat-icon-button
+          (click)="userLogin()"
+          title="Login"
+          color="accent">
+    Login
+  </button>
+
+  <div class="social-auth">
+    <button class="add-new-ex-btn"
+            mat-icon-button
+            (click)="googleLogin()"
+            title="google"
+            color="accent">
+      Login with google
+    </button>
+  </div>
+
+</div>

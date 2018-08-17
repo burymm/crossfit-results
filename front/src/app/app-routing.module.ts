@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EnterResultsComponent } from './enter-results/enter-results.component';
 import { ViewResultsComponent } from './view-results/view-results.component';
-import { AppComponent}  from "./app.component";
 import {UserResultsComponent} from "./user-results/user-results.component";
+import {LoginComponent} from "./unathorize/login/login.component";
 
 const routes: Routes = [{
 	  path: 'add-result',
@@ -14,6 +14,9 @@ const routes: Routes = [{
 	}, {
     path: 'results/:cardNumber',
     component: UserResultsComponent,
+  }, {
+    path: 'login',
+    component: LoginComponent,
 	}, {
     path: '',
     redirectTo: 'results',

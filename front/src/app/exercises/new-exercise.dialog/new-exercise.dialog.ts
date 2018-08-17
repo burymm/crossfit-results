@@ -46,11 +46,10 @@ ngOnInit() {
     this.rest.getList().subscribe((list) => {
       this.exNames = list;
 
-      this.filteredExNames = this.myControl.valueChanges
+      this.filteredExNames = this.exerciseName.valueChanges
         .pipe(
           startWith<string | Exercise>(''),
-          map(value => typeof value === 'string' ? value : value.name),
-          map(name => name ? this._filter(name) : this.exNames)
+          map((name: string) => name ? this._filter(name) : this.exNames)
         );
     });
   }

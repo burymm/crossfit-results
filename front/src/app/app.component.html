@@ -1,5 +1,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-<div class="container crossfit-dark-theme">
-<router-outlet></router-outlet>
+<div *ngIf="isAuthorized()" class="container crossfit-dark-theme">
+<router-outlet *ngIf="isAuthorized()"></router-outlet>
 </div><!-- end container -->
+
+<app-login (userAuthorize)="onUserAuthorized($event)" class="container crossfit-dark-theme" *ngIf="!isAuthorized()"></app-login>

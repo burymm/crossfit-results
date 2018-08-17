@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { assign, map, first, filter, isNil } from 'lodash';
 import {Exercise} from "../models/models";
-import { HttpClient } from '@angular/common/http';
+import { ResultsService } from '../services/results.service';
 
 @Component({
   selector: 'app-ag-grid',
@@ -20,11 +20,9 @@ export class AgGridComponent implements OnInit {
   rowData: any;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private resultService: ResultsService) { }
 
   ngOnInit() {
-    this.rowData = this.http.get('/results');
+    this.rowData = this.resultService.getResults();
   }
-
-
 }
