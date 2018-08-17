@@ -68,6 +68,8 @@ export class LoginComponent implements OnInit {
       });
   
       this.userAuthorize.emit(authorizedByLogin);
+    }, (error) => {
+      console.error(error);
     });
   }
 }
