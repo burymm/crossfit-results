@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
 import { assign, map, first, filter, isNil } from 'lodash';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Router} from '@angular/router';
 import {MatDialog} from "@angular/material";
 import {EnterResultsComponent} from "../enter-results/enter-results.component";
 import {ExerciseService} from "../services/exercise.service";
 import {Exercise} from "../models/models";
-import {Observable} from "rxjs/Observable";
-import { HttpClient } from '@angular/common/http';
+import { ResultsService } from '../services/results.service';
 
 
 @Component({
@@ -32,14 +31,14 @@ export class ViewResultsComponent implements OnInit {
               private rest: RestService,
               private router: Router,
               private exService: ExerciseService,
-              private http: HttpClient) { }
+              private resultsService: ResultsService) { }
 
   ngOnInit() {
    this.exService.getList().subscribe((list) => {
       this.exercises = list;
       this.loadResults();
-    })
-   this.rowData = this.http.get('/results');
+    });
+   this.rowData = this.resultsService.getResults();
   }
 
   onAddResultClick() {
