@@ -113,8 +113,10 @@ app.post('/googleAuth', function (req, res) {
   oauth2.userinfo.get(
     function(error, response) {
       if (error) {
-        res.statusCode = 400;
-        res.end('Token error', error);
+        res.statusCode = error.code;
+        res.end(JSON.stringify({
+          text: error.message,
+        }));
       } else {
         res.statusCode = 200;
         res.end(JSON.stringify(response.data));

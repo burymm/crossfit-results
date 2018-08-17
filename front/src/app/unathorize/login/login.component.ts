@@ -69,7 +69,11 @@ export class LoginComponent implements OnInit {
   
       this.userAuthorize.emit(authorizedByLogin);
     }, (error) => {
-      console.error(error);
+      if (error.status === 401) {
+        this.auth.logout();
+        this.profile.clearProfile();
+        location.reload();
+      }
     });
   }
 }
