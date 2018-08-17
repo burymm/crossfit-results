@@ -7,6 +7,7 @@ import {EnterResultsComponent} from "../enter-results/enter-results.component";
 import {ExerciseService} from "../services/exercise.service";
 import {Exercise} from "../models/models";
 import {Observable} from "rxjs/Observable";
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -18,18 +19,27 @@ export class ViewResultsComponent implements OnInit {
   results: any;
   exercises: Exercise[] = [];
 
+  columnDefs = [
+    {headerName: 'Date', field: 'trainingDate', minWidth: 50},
+    {headerName: 'Card Number', field: 'cardNumber', minWidth: 50 },
+    {headerName: 'Exercise', field: 'exerciseName', minWidth: 50},
+    {headerName: 'Result', field: 'workoutResult', minWidth: 50}
+  ];
 
+  rowData: any;
 
   constructor(public dialog: MatDialog,
               private rest: RestService,
               private router: Router,
-              private exService: ExerciseService) { }
+              private exService: ExerciseService,
+              private http: HttpClient) { }
 
   ngOnInit() {
    this.exService.getList().subscribe((list) => {
       this.exercises = list;
       this.loadResults();
     })
+   this.rowData = this.http.get('/results');
   }
 
   onAddResultClick() {

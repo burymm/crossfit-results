@@ -26,10 +26,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { AgGridModule } from 'ag-grid-angular';
 import {UserResultsComponent} from "./user-results/user-results.component";
-import { AgGridComponent } from './ag-grid/ag-grid.component';
 import { LoginComponent } from "./unathorize/login/login.component";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
+
+
 
 @NgModule({
   declarations: [
@@ -39,7 +40,6 @@ import { UserService } from "./services/user.service";
     HeaderComponent,
     FooterComponent,
     UserResultsComponent,
-    AgGridComponent,
     LoginComponent,
   ],
   imports: [
@@ -62,7 +62,7 @@ import { UserService } from "./services/user.service";
     MatFormFieldModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    AgGridModule.withComponents([AgGridComponent])
+    AgGridModule.withComponents([ViewResultsComponent])
   ],
   providers: [
     HttpClient,

@@ -22,7 +22,7 @@ export class NewExerciseDialog implements OnInit {
     Sc: 0,
     Rx: 0,
   };
-  
+
   exerciseName = new FormControl();
   //exNames: string[] = ['Burpee', 'Ball Slam', 'Deadlift', 'Jump Rope', 'Pull-ups', 'Running', 'Sit-ups'];
   exercise: Exercise;

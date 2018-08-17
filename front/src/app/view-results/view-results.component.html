@@ -12,7 +12,14 @@
     <!--</div>-->
   <!--</div>-->
 
-<app-ag-grid></app-ag-grid>
+  <ag-grid-angular
+    class="main-table ag-theme-balham-dark"
+    [enableSorting]="true"
+    [enableFilter]="true"
+    [rowData]="rowData | async"
+    [columnDefs]="columnDefs"
+  >
+  </ag-grid-angular>
 
 </div> <!-- end content -->
 
