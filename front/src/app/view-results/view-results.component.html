@@ -2,25 +2,16 @@
 
 <button class="add-res-btn" mat-raised-button (click)="onAddResultClick()">Add result</button>
 <div class="content">
-
-  <input type="text">
-
-  <!--<div class="table-results">-->
-
-    <!--<div *ngFor="let result of results">-->
-      <!--<button (click)="showUserResult(result.cardNumber)">view user results</button> <span>{{ result | json }}</span>-->
-    <!--</div>-->
-  <!--</div>-->
-
   <ag-grid-angular
     class="main-table ag-theme-balham-dark"
+    #agGrid
+    id="resultAgGrid"
+    (cellClicked)="onCellClicked($event)"
     [enableSorting]="true"
     [enableFilter]="true"
     [rowData]="rowData | async"
     [columnDefs]="columnDefs"
-  >
-  </ag-grid-angular>
-
+  ></ag-grid-angular>
 </div> <!-- end content -->
 
 <app-footer></app-footer>

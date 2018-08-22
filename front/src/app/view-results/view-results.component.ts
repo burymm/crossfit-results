@@ -20,12 +20,13 @@ export class ViewResultsComponent implements OnInit {
   results: any;
   exercises: Exercise[] = [];
 
-  columnDefs = [
-    {headerName: 'Date', field: 'trainingDate', minWidth: 50},
-    {headerName: 'Card Number', field: 'cardNumber', minWidth: 50, cellRenderer: function (params) {
-      return '<a href="/results/:cardNumber" style="text-decoration: none; color: white;">'+ params.value+'</a>';
-    }},
-    {headerName: 'Exercise', field: 'exerciseName', minWidth: 50},
+  columnDefs = [{
+    headerName: 'Date', field: 'trainingDate', minWidth: 50
+  }, {
+      headerName: 'Card Number',
+      field: 'cardNumber',
+      minWidth: 50,
+  }, {headerName: 'Exercise', field: 'exerciseName', minWidth: 50},
     {headerName: 'Result', field: 'workoutResult', minWidth: 50}
   ];
 
@@ -55,14 +56,22 @@ export class ViewResultsComponent implements OnInit {
       this.loadResults();
     });
   }
-
-  // showUserResult(cardNumber: string) {
-  //   if (!cardNumber) {
-  //     return;
-  //   }
-  //
-  //   this.router.navigate([`/results/`, cardNumber]);
-  // }
+  
+  onCellClicked($event) {
+    if ($event.column.colId !== 'cardNumber') {
+      return;
+    }
+  
+    this.showUserResult($event.value);
+  }
+  
+  showUserResult(cardNumber: string) {
+    if (!cardNumber) {
+      return;
+    }
+  
+    this.router.navigate([`/results/`, cardNumber]);
+  }
 
   private loadResults() {
     return this.rest.getResults().subscribe((results) => {
