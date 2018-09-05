@@ -4,7 +4,8 @@ import { assign, map, first, filter, isNil } from 'lodash';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from "@angular/material";
 import {ExerciseService} from "../services/exercise.service";
-import {Exercise, ID} from "../models/models";
+import {Exercise, ExerciseFilter, ID} from "../models/models";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-user-results',
@@ -16,6 +17,16 @@ export class UserResultsComponent implements OnInit {
   exerciseItem: Exercise;
   exercises: Exercise[] = [];
   userId: ID;
+
+  columnDefs = [{
+    headerName: 'Date', field: 'trainingDate', minWidth: 50
+  }, {
+    headerName: 'Exercise', field: 'exerciseName', minWidth: 50
+  }, {
+    headerName: 'Result', field: 'workoutResult', minWidth: 50
+  }];
+
+  rowData: any;
 
   constructor(public dialog: MatDialog,
               private rest: RestService,
@@ -30,6 +41,7 @@ export class UserResultsComponent implements OnInit {
       this.exercises = list;
       this.loadResults();
     })
+    this.rowData = this.rest.getUserResults(this.userId);
   }
 
   filterData() {
