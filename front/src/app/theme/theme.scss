@@ -1,5 +1,18 @@
 $default-input-color: #fff;
 $main-color: #f57c00;
+$alt-main-color: #000;
+$main-bg-color: #000;
+
+.link {
+  color: $main-color;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, span, div {
+  color: $default-input-color;
+}
 
 .mat-input-wrapper.mat-form-field-wrapper {
   color: $default-input-color;

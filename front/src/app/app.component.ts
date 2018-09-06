@@ -34,6 +34,9 @@ export class AppComponent implements OnInit {
   loginViaToken(appToken) {
     this.auth.loginViaAppToken(appToken).subscribe((authData: UserProfile) => {
       this.userService.setProfile(authData);
+      if (!authData.cardNumber) {
+        this.router.navigate(['/user-profile']);
+      }
     }, (error) => {
       this.auth.logout();
     });

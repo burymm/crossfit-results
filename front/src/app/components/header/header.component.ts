@@ -2,6 +2,7 @@ import {
   Component,
   Input,
 } from '@angular/core';
+import { Menu } from '../../models/models';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,16 @@ export class HeaderComponent {
 
   @Input()
   title: string;
+  
+  menuList: Menu[];
 
-  constructor() {}
+  constructor() {
+    this.menuList = [{
+      title: 'Results',
+      url: '/results',
+    }, {
+      title: 'Profile',
+      url: '/user-profile',
+    }];
+  }
 }

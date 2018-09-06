@@ -4,6 +4,7 @@ import { EnterResultsComponent } from './enter-results/enter-results.component';
 import { ViewResultsComponent } from './view-results/view-results.component';
 import {UserResultsComponent} from "./user-results/user-results.component";
 import {LoginComponent} from "./unathorize/login/login.component";
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [{
 	  path: 'add-result',
@@ -17,6 +18,9 @@ const routes: Routes = [{
   }, {
     path: 'login',
     component: LoginComponent,
+  }, {
+    path: 'user-profile',
+    component: UserProfileComponent,
 	}, {
     path: '',
     redirectTo: 'results',

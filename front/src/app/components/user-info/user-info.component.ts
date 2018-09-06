@@ -35,6 +35,6 @@ export class UserInfoComponent implements OnInit{
   }
   
   showUserProfile() {
-    console.log('Not implemented');
+    this.router.navigateByUrl('/user-profile');
   }
 }

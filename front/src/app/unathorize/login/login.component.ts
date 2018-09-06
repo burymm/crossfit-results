@@ -40,7 +40,6 @@ export class LoginComponent {
         googleAuth.signIn({scope: 'profile email'}).then(googleUser => {
           const token = googleUser.getAuthResponse().access_token;
           this.checkGoogleAuthorization(token, true);
-          console.log(googleUser.getBasicProfile());
         });
       });
     }
@@ -60,7 +59,13 @@ export class LoginComponent {
         id: data.id,
       }).subscribe((profile: UserProfile) => {
         this.auth.saveAppToken(profile.token);
-        this.zone.run(() => this.router.navigate(['/results']));
+        this.zone.run(() => {
+          if (profile.cardNumber) {
+            this.router.navigate(['/results']);
+          } else {
+            this.router.navigate(['/user-profile']);
+          }
+        });
         
       });
     }, (error) => {

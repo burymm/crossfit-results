@@ -32,5 +32,11 @@ export type UserProfile = {
   picture: string;
   id: string;
   token?: string;
+  cardNumber?: string;
+}
+
+export type Menu = {
+  title: string;
+  url: string;
 }
 

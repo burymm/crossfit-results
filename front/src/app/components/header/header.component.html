@@ -1,3 +1,5 @@
 <header class="header">
-  <img src="assets/img/header.png" class="header-photo">
+  <nav class="nav-menu opacity-bg">
+    <a class="link nav-menu__item" *ngFor="let menuItem of menuList" [routerLink]="menuItem.url">{{menuItem.title}}</a>
+  </nav>
 </header>

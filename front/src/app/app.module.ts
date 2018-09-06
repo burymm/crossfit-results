@@ -30,6 +30,7 @@ import { LoginComponent } from "./unathorize/login/login.component";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -43,6 +44,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     UserResultsComponent,
     LoginComponent,
     UserInfoComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
