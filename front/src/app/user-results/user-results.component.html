@@ -15,10 +15,20 @@
 
   <h2>User results</h2>
 
-  <div class="table-results">
-    {{ results | json }}
-  </div>
+  <!--<div class="table-results">-->
+    <!--{{ results | json }}-->
+  <!--</div>-->
 
-</div>
+  <ag-grid-angular
+    class="main-table ag-theme-balham-dark"
+    #agGrid
+    id="resultAgGrid"
+    [enableSorting]="true"
+    [enableFilter]="true"
+    [rowData]="rowData | async"
+    [columnDefs]="columnDefs"
+  ></ag-grid-angular>
+
+</div> <!-- end content -->
 
 <app-footer></app-footer>
