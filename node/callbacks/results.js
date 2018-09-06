@@ -3,6 +3,7 @@ const dbInstance = new dbSingleton();
 const moment = require('moment');
 const consts = require('./../consts');
 const utils = require('./../utils');
+const authUtils = require('./../utils/auth.utils');
 
 function updateExerciseAverageValue(res, record) {
   const trainingDate = moment(record.trainingDate).format('YYYY-MM-DD');
@@ -54,6 +55,8 @@ function updateExerciseAverageValue(res, record) {
 }
 
 function post(req, res) {
+  authUtils.checkBearer(req, res);
+  
   const record = req.body;
   const trainingDate = moment(record.trainingDate).format('YYYY-MM-DD');
   const db = dbInstance.getDd();
@@ -73,6 +76,8 @@ function post(req, res) {
 }
 
 function get(req, res) {
+  authUtils.checkBearer(req, res);
+  
   const db = dbInstance.getDd();
   
   db.collection('results').aggregate([
@@ -120,6 +125,8 @@ function get(req, res) {
 }
 
 function getByCardNumber(req, res) {
+  authUtils.checkBearer(req, res);
+  
   const params = {};
   const db = dbInstance.getDd();
   

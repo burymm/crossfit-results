@@ -1,7 +1,10 @@
 const dbSingleton = require('./../mongo');
 const dbInstance = new dbSingleton();
+const authUtils = require('./../utils/auth.utils');
 
 function post(req, res) {
+  authUtils.checkBearer(req, res);
+  
   const record = req.body;
   const db = dbInstance.getDd();
   
@@ -18,6 +21,8 @@ function post(req, res) {
 }
 
 function get(req, res) {
+  authUtils.checkBearer(req, res);
+  
   const db = dbInstance.getDd();
   
   db.collection('exercises').find({}).toArray(function(err, result) {

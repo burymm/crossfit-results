@@ -1,0 +1,8 @@
+<div class="user-info-wrapper">
+  <div class="user-image" [ngStyle]="{'background-image': 'url(' + profile.picture + ')'}" alt="profile.name"></div>
+  <div class="user-info">
+    <h2 class="user-name link" (click)="showUserProfile()">{{ profile.name }}</h2>
+    <a class="user-email">{{ profile.email }}</a>
+    <a class="link" (click)="logout()">Logout</a>
+  </div>
+</div>

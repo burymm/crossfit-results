@@ -7,6 +7,11 @@ const config = {
   app: {
     port: 3000,
   },
+  jwt: {
+    secret: 'crossfit-secret',
+    expiresIn: 15 * 86400, // 15 * 24 hours by default
+  }
+  
 };
 
 

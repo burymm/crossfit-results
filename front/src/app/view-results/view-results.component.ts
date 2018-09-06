@@ -36,7 +36,8 @@ export class ViewResultsComponent implements OnInit {
               private rest: RestService,
               private router: Router,
               private exService: ExerciseService,
-              private resultsService: ResultsService) { }
+              private resultsService: ResultsService) {
+  }
 
   ngOnInit() {
    this.exService.getList().subscribe((list) => {

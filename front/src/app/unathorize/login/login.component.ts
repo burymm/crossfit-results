@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, NgZone, OnInit, Output } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../services/user.service";
 import {UserProfile} from "../../models/models";
+import { Router } from '@angular/router';
 
 declare const gapi : any;
 
@@ -11,7 +12,7 @@ declare const gapi : any;
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   password: string;
   login: string;
   
@@ -19,21 +20,13 @@ export class LoginComponent implements OnInit {
   userAuthorize = new EventEmitter();
   
   constructor(private auth: AuthService,
-              private profile: UserService) {
+              private profile: UserService,
+              private router: Router,
+              private zone: NgZone) {
     gapi.load('auth2', () => {
       gapi.auth2.init();
     });
-    
   }
-  
-  ngOnInit() {
-    const savedToken = this.auth.loadGoogleToken();
-  
-    if (savedToken) {
-      this.checkGoogleAuthorization(savedToken)
-    }
-  }
-  
   
   googleLogin() {
     const savedToken = this.auth.loadGoogleToken();
@@ -65,14 +58,15 @@ export class LoginComponent implements OnInit {
         email: data.email,
         picture: data.picture,
         id: data.id,
+      }).subscribe((profile: UserProfile) => {
+        this.auth.saveAppToken(profile.token);
+        this.zone.run(() => this.router.navigate(['/results']));
+        
       });
-  
-      this.userAuthorize.emit(authorizedByLogin);
     }, (error) => {
       if (error.status === 401) {
         this.auth.logout();
         this.profile.clearProfile();
-        location.reload();
       }
     });
   }

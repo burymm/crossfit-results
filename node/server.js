@@ -10,6 +10,7 @@ const config = require('./config');
 // routing callbacks
 const exersices = require('./callbacks/exercises');
 const results = require('./callbacks/results');
+const profile = require('./callbacks/profile');
 
 const oauth2Client = new google.auth.OAuth2(
   '40421314935-dv7j9srrkesqgmmv2rtilimocklfe7e6.apps.googleusercontent.com',
@@ -31,7 +32,7 @@ app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Credentials", false);
   res.setHeader("Access-Control-Max-Age", '86400'); // 24 hours
-  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-XSRF-TOKEN");
+  res.setHeader("Access-Control-Allow-Headers", `X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-XSRF-TOKEN, Authorization`);
   res.setHeader('Content-Type', 'application/json');
   next();
 });
@@ -80,6 +81,9 @@ app.post('/results', results.post);
 app.get('/results', results.get);
 app.get('/results/:cardNumber', results.getByCardNumber);
 
+app.post('/profile', profile.post);
+app.post('/tokenAuth', profile.loginViaToken);
+
 app.listen(config.app.port, function() {
-  console.log(`Server running at ${config.app.port} port`);
+  console.log(`Server running at ${config.app.port} port. Live reload now!`);
 });

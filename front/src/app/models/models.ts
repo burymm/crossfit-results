@@ -31,5 +31,6 @@ export type UserProfile = {
   email: string;
   picture: string;
   id: string;
+  token?: string;
 }
 

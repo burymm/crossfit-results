@@ -29,6 +29,7 @@ import {UserResultsComponent} from "./user-results/user-results.component";
 import { LoginComponent } from "./unathorize/login/login.component";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 
 
@@ -41,6 +42,7 @@ import { UserService } from "./services/user.service";
     FooterComponent,
     UserResultsComponent,
     LoginComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,
