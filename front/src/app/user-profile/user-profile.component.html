@@ -1,4 +1,26 @@
 <app-header></app-header>
-<h2>user profile</h2>
+<div class="container">
+  <h2>user profile</h2>
+  <form #form="ngForm" (ngSubmit)="saveUserProfile(form)" class="form-container">
+    <div class="row">
+      <mat-form-field>
+        <input matInput placeholder="Full name" [(ngModel)]="profile.name" name="name">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <input matInput placeholder="Email" disabled [(ngModel)]="profile.email" name="email">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <input matInput placeholder="Card Number" [(ngModel)]="profile.cardNumber" required name="cardNumber">
+      </mat-form-field>
+    </div>
+    <button mat-button color="primary" type="submit">Save</button>
+
+  </form>
+</div>
+
 
 <app-footer></app-footer>

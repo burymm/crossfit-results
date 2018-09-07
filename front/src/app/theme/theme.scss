@@ -2,6 +2,8 @@ $default-input-color: #fff;
 $main-color: #f57c00;
 $alt-main-color: #000;
 $main-bg-color: #000;
+$error-color: #f00;
+
 
 .link {
   color: $main-color;
@@ -16,4 +18,14 @@ h1, h2, h3, h4, h5, h6, p, span, div {
 
 .mat-input-wrapper.mat-form-field-wrapper {
   color: $default-input-color;
+}
+
+.mat-form-field-invalid .mat-form-field-label.mat-accent,
+.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker,
+.mat-form-field-invalid .mat-input-element {
+  color: $error-color;
+}
+
+.mat-form-field-invalid .mat-form-field-label {
+  color: $error-color;
 }

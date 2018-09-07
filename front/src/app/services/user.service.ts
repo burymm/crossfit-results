@@ -1,13 +1,13 @@
 import {Injectable} from "@angular/core";
 import {UserProfile} from "../models/models";
 import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
+import { defaultUserData } from '../models/model.data';
 
 @Injectable()
 export class UserService {
   profile: UserProfile;
-  profileSubscriber: Subscriber<UserProfile>;
-  profileObserver: Observable<UserProfile>;
+  profileObserver: BehaviorSubject<UserProfile>;
   
   constructor(private http: HttpClient) {
   }
@@ -32,10 +32,10 @@ export class UserService {
       this.getProfileObserver();
     }
     this.profile = profile;
-    this.profileSubscriber.next(this.profile);
+    this.profileObserver.next(this.profile);
   }
   
-  getProfile(): Observable<UserProfile> {
+  getProfile(): BehaviorSubject<UserProfile> {
     return this.getProfileObserver();
   }
   
@@ -45,9 +45,7 @@ export class UserService {
   
   private getProfileObserver() {
     if (!this.profileObserver) {
-      this.profileObserver = new Observable((observer) => {
-        this.profileSubscriber = observer;
-      });
+      this.profileObserver = new BehaviorSubject(defaultUserData());
     }
   
     return this.profileObserver;

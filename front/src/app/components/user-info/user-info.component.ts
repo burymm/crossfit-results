@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { defaultUserData } from '../../models/model.data';
 
 @Component({
   selector: 'app-user-info',
@@ -11,12 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class UserInfoComponent implements OnInit{
-  profile: UserProfile = {
-    name: '',
-    email: '',
-    picture: '',
-    id: '',
-  };
+  profile: UserProfile = defaultUserData();
   
   constructor(private userService: UserService,
               private authService: AuthService,
