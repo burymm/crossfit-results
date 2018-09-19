@@ -29,6 +29,24 @@
     [columnDefs]="columnDefs"
   ></ag-grid-angular>
 
+  <ngx-charts-line-chart
+    class="chart"
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="multi"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [autoScale]="autoScale"
+    (select)="onSelect($event)">
+  </ngx-charts-line-chart>
+
+
 </div> <!-- end content -->
 
 <app-footer></app-footer>

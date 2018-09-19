@@ -4,8 +4,10 @@ import { assign, map, first, filter, isNil } from 'lodash';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from "@angular/material";
 import {ExerciseService} from "../services/exercise.service";
-import {Exercise, ExerciseFilter, ID} from "../models/models";
+import {Exercise, ExerciseFilter, ID, WorkoutResult} from "../models/models";
 import {HttpClient} from "@angular/common/http";
+
+
 
 @Component({
   selector: 'app-user-results',
@@ -28,6 +30,36 @@ export class UserResultsComponent implements OnInit {
 
   rowData: any;
 
+  multi: any[] = [
+    {
+      name: "Individual",
+      series:[]
+    },
+    {
+      name: "Club",
+      series:[]
+    }
+  ];
+
+  view: any[] = [700, 400];
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Date';
+  showYAxisLabel = true;
+  yAxisLabel = 'Result';
+
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#AAAAAA']
+  };
+
+  // line, area
+  autoScale = true;
+
   constructor(public dialog: MatDialog,
               private rest: RestService,
               private router: Router,
@@ -42,6 +74,7 @@ export class UserResultsComponent implements OnInit {
       this.loadResults();
     })
     this.rowData = this.rest.getUserResults(this.userId);
+    this.displayGraphData();
   }
 
   filterData() {
@@ -52,7 +85,7 @@ export class UserResultsComponent implements OnInit {
     return this.rest.getUserResults(this.userId, {
       exerciseId: this.exerciseItem && this.exerciseItem._id,
     }).subscribe((results) => {
-      assign(this, { results: this.mapResults(results) });
+      assign(this, { results: this.mapResults(results) } );
     });
   }
 
@@ -69,5 +102,19 @@ export class UserResultsComponent implements OnInit {
       return result;
     });
   }
+
+  displayGraphData() {
+    return this.rest.getUserResults(this.userId).subscribe((results) => {
+      console.log(results);
+      this.results.forEach((elememt) => {
+        this.multi.push({"name": elememt.trainingDate, "value": elememt.workoutResult});
+      })
+    })
+  };
+
+  onSelect(event) {
+    console.log(event);
+  }
+
 
 }
