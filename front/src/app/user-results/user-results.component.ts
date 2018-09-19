@@ -72,7 +72,7 @@ export class UserResultsComponent implements OnInit {
     this.exService.getList().subscribe((list) => {
       this.exercises = list;
       this.loadResults();
-    })
+    });
     this.rowData = this.rest.getUserResults(this.userId);
     this.displayGraphData();
   }
