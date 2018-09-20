@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { RestService } from '../services/rest.service';
-import { Exercise, Workout } from '../models/models';
+import { Exercise, UserProfile, Workout } from '../models/models';
 import {MatDialog, MatDialogRef} from "@angular/material";
 import {NewExerciseDialog} from "../exercises/new-exercise.dialog/new-exercise.dialog";
 import {ExerciseService} from "../services/exercise.service";
@@ -13,6 +13,7 @@ import {MAT_DIALOG_DATA} from "@angular/material";
 import {FormControl} from "@angular/forms";
 import {startWith, map} from "rxjs/operators";
 import {Observable} from "rxjs/Observable";
+import { UserService } from '../services/user.service';
 
 
 
@@ -44,6 +45,7 @@ export class EnterResultsComponent implements OnInit {
               private exService: ExerciseService,
               private iconRegistry: MatIconRegistry,
               private sanitizer: DomSanitizer,
+              private userService: UserService,
               public dialogRef: MatDialogRef<EnterResultsComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,) {
 
@@ -58,6 +60,9 @@ export class EnterResultsComponent implements OnInit {
 
 	ngOnInit() {
 		this.Users = this.usersService.userData;
+		this.userService.getProfile().subscribe((profile) => {
+		  this.cardNumber = profile.cardNumber;
+    });
 		this.loadExerciseList();
 	}
 

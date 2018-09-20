@@ -2,6 +2,7 @@ const dbSingleton = require('./../mongo');
 const authUtils = require('./../utils/auth.utils');
 const ObjectId = require('mongodb').ObjectID;
 const dbInstance = new dbSingleton();
+const _ = require('lodash');
 
 function post(req, res) {
   const profile = req.body;
@@ -17,12 +18,19 @@ function post(req, res) {
     }
     
     if (result.length > 0) {
-      const profile = result[0];
-      
+      const existProfile = result[0];
+      if (!_.isEqual(existProfile, profile)) {
+        _.merge(existProfile, profile);
+        db.collection('profiles').update({
+          _id: existProfile._id,
+        }, { $set:
+            existProfile,
+        });
+      }
       res.statusCode = 200;
       res.end(JSON.stringify({
-        ...profile,
-        token: authUtils.getToken(profile),
+        ...existProfile,
+        token: authUtils.getToken(existProfile),
       }));
       return;
     }

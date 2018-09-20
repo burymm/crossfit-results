@@ -25,5 +25,15 @@ export class UserProfileComponent implements OnInit{
     if (!form.valid) {
       return;
     }
+    
+    this.userService.saveProfile({
+      name: this.profile.name,
+      email: this.profile.email,
+      picture: this.profile.picture,
+      id: this.profile.id,
+      cardNumber: this.profile.cardNumber,
+    }).subscribe((profile: UserProfile) => {
+      this.profile = profile;
+    })
   }
 }
