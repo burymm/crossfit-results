@@ -1,12 +1,19 @@
 const dbSingleton = require('./../mongo');
 const dbInstance = new dbSingleton();
 const authUtils = require('./../utils/auth.utils');
+const _ = require('lodash');
 
 function post(req, res) {
   authUtils.checkBearer(req, res);
   
   const record = req.body;
   const db = dbInstance.getDd();
+  
+  if (_.isNil(record.name)) {
+    res.statusCode = 400;
+    res.end('[Exercise name] required');
+    return;
+  }
   
   db.collection('exercises').insert(record, (err, results) => {
     if (err) {

@@ -5,10 +5,9 @@ import { Router} from '@angular/router';
 import {MatDialog} from "@angular/material";
 import {EnterResultsComponent} from "../enter-results/enter-results.component";
 import {ExerciseService} from "../services/exercise.service";
-import {Exercise} from "../models/models";
+import { Exercise, WorkoutResult } from '../models/models';
 import { ResultsService } from '../services/results.service';
-import {CellClickedEvent} from "ag-grid";
-import {a} from "@angular/core/src/render3";
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -17,7 +16,7 @@ import {a} from "@angular/core/src/render3";
   styleUrls: ['./view-results.component.scss']
 })
 export class ViewResultsComponent implements OnInit {
-  results: any;
+  results: Array<WorkoutResult> = [];
   exercises: Exercise[] = [];
 
   columnDefs = [{
@@ -36,15 +35,21 @@ export class ViewResultsComponent implements OnInit {
               private rest: RestService,
               private router: Router,
               private exService: ExerciseService,
-              private resultsService: ResultsService) {
+              private resultsService: ResultsService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
-   this.exService.getList().subscribe((list) => {
+    this.userService.getProfile().subscribe((profile) => {
+      if (profile.cardNumber) {
+        this.router.navigate([`/results/`, profile.cardNumber]);
+      }
+    });
+    this.exService.getList().subscribe((list) => {
       this.exercises = list;
       this.loadResults();
     });
-   this.rowData = this.resultsService.getResults();
+    this.rowData = this.resultsService.getResults();
   }
 
   onAddResultClick() {

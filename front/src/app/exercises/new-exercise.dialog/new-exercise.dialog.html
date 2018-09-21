@@ -1,71 +1,53 @@
 <button class="white header-item" mat-button>New exercise</button>
 
 <div class="dial-content">
-
-  <!--<div>-->
-    <!--<mat-form-field color="accent">-->
-      <!--<input matInput-->
-             <!--type="text"-->
-             <!--id="name"-->
-             <!--name="name"-->
-             <!--[(ngModel)]="name"-->
-             <!--placeholder='Exercise name'>-->
-    <!--</mat-form-field>-->
-  <!--</div> -->
-
-
-  <div>
+  <form [formGroup]="exerciseForm">
+    <div>
 
       <mat-form-field>
         <input type="text"
                placeholder="Exercise name"
                matInput
-               [formControl]="exerciseName"
-               [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let exName of filteredExNames | async" [value]="exName.name" class="red">
-            {{exName.name}}
-          </mat-option>
-        </mat-autocomplete>
+               formControlName="exerciseName">
       </mat-form-field>
 
-  </div>
+    </div>
 
-  <div>
-    <mat-form-field color="accent">
+    <div>
+      <mat-form-field color="accent">
       <textarea matInput type="text"
                 id="description"
+                formControlName="description"
                 name="description"
-                [(ngModel)]="description"
                 placeholder="Exercise description"></textarea>
-    </mat-form-field>
-  </div>
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field color="accent">
-      <input matInput
-             type="text"
-             id="rx-result"
-             name="rx-result"
-             [(ngModel)]="result.Rx"
-             placeholder="Exercise result for Rx version">
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field color="accent">
+        <input matInput
+               type="text"
+               id="rxResult"
+               name="rxResult"
+               formControlName="rxResult"
+               placeholder="Exercise result for Rx version">
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field color="accent">
-      <input matInput
-             type="text"
-             id="sc-result"
-             name="sc-result"
-             [(ngModel)]="result.Sc"
-             placeholder="Exercise result for Sc version">
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field color="accent">
+        <input matInput
+               type="text"
+               id="scResult"
+               name="scResult"
+               formControlName="scResult"
+               placeholder="Exercise result for Sc version">
+      </mat-form-field>
+    </div>
 
-  <div>
-    <button class="bottom-btn" mat-raised-button (click)="onSave()">Save</button>
-    <button class="bottom-btn" mat-raised-button (click)="onCancel()">Cancel</button>
-  </div>
-
+    <div>
+      <button class="bottom-btn" mat-raised-button type="submit" (click)="onSave()">Save</button>
+      <button class="bottom-btn" mat-raised-button (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
 </div>

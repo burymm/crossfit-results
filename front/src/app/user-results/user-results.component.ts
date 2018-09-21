@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material";
 import {ExerciseService} from "../services/exercise.service";
 import {Exercise, ExerciseFilter, ID, WorkoutResult} from "../models/models";
 import {HttpClient} from "@angular/common/http";
+import { EnterResultsComponent } from '../enter-results/enter-results.component';
 
 
 
@@ -15,7 +16,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./user-results.component.scss']
 })
 export class UserResultsComponent implements OnInit {
-  results: any;
+  results: Array<WorkoutResult> = [];
   exerciseItem: Exercise;
   exercises: Exercise[] = [];
   userId: ID;
@@ -80,26 +81,15 @@ export class UserResultsComponent implements OnInit {
   filterData() {
     this.loadResults();
   }
-
-  private loadResults() {
-    return this.rest.getUserResults(this.userId, {
-      exerciseId: this.exerciseItem && this.exerciseItem._id,
-    }).subscribe((results) => {
-      assign(this, { results: this.mapResults(results) } );
+  
+  onAddResultClick() {
+    let dialogRef = this.dialog.open(EnterResultsComponent,  {
+      width: '90%',
+      data: { }
     });
-  }
-
-  private mapResults(results) {
-    return map(results, (result) => {
-      const exercise = first(filter(this.exercises, (exercese) => {
-        return exercese._id === result.exerciseId;
-      }));
-
-      if (!isNil(exercise)) {
-        result.exercise = {};
-        assign(result.exercise, exercise);
-      }
-      return result;
+    
+    dialogRef.afterClosed().subscribe(result => {
+      this.loadResults();
     });
   }
 
@@ -114,6 +104,28 @@ export class UserResultsComponent implements OnInit {
 
   onSelect(event) {
     console.log(event);
+  }
+  
+  private loadResults() {
+    return this.rest.getUserResults(this.userId, {
+      exerciseId: this.exerciseItem && this.exerciseItem._id,
+    }).subscribe((results) => {
+      assign(this, { results: this.mapResults(results) } );
+    });
+  }
+  
+  private mapResults(results) {
+    return map(results, (result) => {
+      const exercise = first(filter(this.exercises, (exercese) => {
+        return exercese._id === result.exerciseId;
+      }));
+      
+      if (!isNil(exercise)) {
+        result.exercise = {};
+        assign(result.exercise, exercise);
+      }
+      return result;
+    });
   }
 
 
