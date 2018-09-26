@@ -5,6 +5,42 @@ const consts = require('./../consts');
 const utils = require('./../utils');
 const authUtils = require('./../utils/auth.utils');
 
+
+const AGGREGATE_PARAMS = [
+  {
+    "$project": {
+      "_id": {
+        $toString: "$_id"
+      },
+      trainingDate: true,
+      cardNumber: true,
+      workoutResult: true,
+      exercise: true
+    },
+  }, {
+    $lookup: {
+      from: 'exercises',
+      localField: 'exerciseId',
+      foreignField: 'exerciseId'.valueOf(),
+      as: 'exercise',
+    }
+  }, {
+    $project: {
+      trainingDate: true,
+      cardNumber: true,
+      workoutResult: true,
+      exercise: { $arrayElemAt: [ "$exercise", 0 ] },
+    }
+  }, {
+    $project: {
+      trainingDate: true,
+      cardNumber: true,
+      workoutResult: true,
+      exerciseName: "$exercise.name",
+    }
+  }
+];
+
 function updateExerciseAverageValue(res, record) {
   const trainingDate = moment(record.trainingDate).format('YYYY-MM-DD');
   const db = dbInstance.getDd();
@@ -80,40 +116,8 @@ function get(req, res) {
   
   const db = dbInstance.getDd();
   
-  db.collection('results').aggregate([
-    {
-      "$project": {
-        "_id": {
-          $toString: "$_id"
-        },
-        trainingDate: true,
-        cardNumber: true,
-        workoutResult: true,
-        exercise: true
-      },
-    }, {
-      $lookup: {
-        from: 'exercises',
-        localField: 'exerciseId',
-        foreignField: 'exerciseId'.valueOf(),
-        as: 'exercise',
-      }
-    }, {
-      $project: {
-        trainingDate: true,
-        cardNumber: true,
-        workoutResult: true,
-        exercise: { $arrayElemAt: [ "$exercise", 0 ] },
-      }
-    }, {
-      $project: {
-        trainingDate: true,
-        cardNumber: true,
-        workoutResult: true,
-        exerciseName: "$exercise.name",
-      }
-    }
-  ]).toArray((err, result) => {
+  db.collection('results').aggregate(AGGREGATE_PARAMS)
+    .toArray((err, result) => {
     if (err) {
       res.statusCode = 404;
       res.end(JSON.stringify(err));
@@ -138,7 +142,8 @@ function getByCardNumber(req, res) {
     params.exerciseId = req.query.exerciseId;
   }
   
-  db.collection('results').find(params).toArray(function(err, result) {
+  db.collection('results').aggregate([{$match: params}, ...AGGREGATE_PARAMS])
+    .toArray(function(err, result) {
     if (err) {
       res.statusCode = 404;
       res.end(JSON.stringify(err));
