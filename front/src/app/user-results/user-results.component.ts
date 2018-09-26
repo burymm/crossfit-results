@@ -88,8 +88,8 @@ export class UserResultsComponent implements OnInit {
       data: { }
     });
     
-    dialogRef.afterClosed().subscribe(result => {
-      this.loadResults();
+    dialogRef.afterClosed().subscribe((result) => {
+      this.rowData = this.rest.getUserResults(this.userId);
     });
   }
 

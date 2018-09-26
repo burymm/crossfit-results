@@ -1,18 +1,21 @@
 <app-header></app-header>
 
 <div class="content">
+
   <button class="add-res-btn" mat-raised-button (click)="onAddResultClick()">Add result</button>
 
-  <mat-form-field class="data-item ex-form">
-    <mat-select [(ngModel)]="exerciseItem">
-      <mat-option *ngFor="let exerciseItem of exercises"
-                  color="primary" [value]="exerciseItem">
-        <p class="red">{{ exerciseItem.name }}</p>
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div>
+    <mat-form-field class="data-item ex-form">
+      <mat-select [(ngModel)]="exerciseItem">
+        <mat-option *ngFor="let exerciseItem of exercises"
+                    color="primary" [value]="exerciseItem">
+          <p class="red">{{ exerciseItem.name }}</p>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <button (click)="filterData()">Filter</button>
+    <button (click)="filterData()">Filter</button>
+  </div>
 
   <h2>User results</h2>
 
