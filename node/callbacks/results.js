@@ -9,8 +9,8 @@ const authUtils = require('./../utils/auth.utils');
 const AGGREGATE_PARAMS = [
   {
     "$project": {
-      "_id": {
-        $toString: "$_id"
+      "exerciseId": {
+        $toObjectId: "$exerciseId"
       },
       trainingDate: true,
       cardNumber: true,
@@ -21,7 +21,7 @@ const AGGREGATE_PARAMS = [
     $lookup: {
       from: 'exercises',
       localField: 'exerciseId',
-      foreignField: 'exerciseId'.valueOf(),
+      foreignField: '_id',
       as: 'exercise',
     }
   }, {
@@ -135,7 +135,7 @@ function getByCardNumber(req, res) {
   const db = dbInstance.getDd();
   
   if (req.params && req.params.cardNumber) {
-    params.cardNumber = req.params.cardNumber;
+    params["$or"] = [{'cardNumber': req.params.cardNumber}, {cardNumber: 'average'}];
   }
   
   if (req.query && req.query.exerciseId) {

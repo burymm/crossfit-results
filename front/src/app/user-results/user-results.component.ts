@@ -27,6 +27,8 @@ export class UserResultsComponent implements OnInit {
     headerName: 'Exercise', field: 'exerciseName', minWidth: 50
   }, {
     headerName: 'Result', field: 'workoutResult', minWidth: 50
+  }, {
+    headerName: 'Card', field: 'cardNumber', minWidth: 50
   }];
 
   rowData: any;
@@ -74,7 +76,6 @@ export class UserResultsComponent implements OnInit {
       this.exercises = list;
       this.loadResults();
     });
-    this.rowData = this.rest.getUserResults(this.userId);
     this.displayGraphData();
   }
 
@@ -89,7 +90,7 @@ export class UserResultsComponent implements OnInit {
     });
     
     dialogRef.afterClosed().subscribe((result) => {
-      this.rowData = this.rest.getUserResults(this.userId);
+      this.loadResults();
     });
   }
 
@@ -110,7 +111,9 @@ export class UserResultsComponent implements OnInit {
     return this.rest.getUserResults(this.userId, {
       exerciseId: this.exerciseItem && this.exerciseItem._id,
     }).subscribe((results) => {
-      assign(this, { results: this.mapResults(results) } );
+      const mappedResults = this.mapResults(results);
+      assign(this.results,  mappedResults);
+      this.rowData = mappedResults;
     });
   }
   

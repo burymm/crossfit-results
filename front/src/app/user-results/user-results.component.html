@@ -18,18 +18,13 @@
   </div>
 
   <h2>User results</h2>
-
-  <!--<div class="table-results">-->
-    <!--{{ results | json }}-->
-  <!--</div>-->
-
   <ag-grid-angular
     class="main-table ag-theme-balham-dark"
     #agGrid
     id="resultAgGrid"
     [enableSorting]="true"
     [enableFilter]="true"
-    [rowData]="rowData | async"
+    [rowData]="rowData"
     [columnDefs]="columnDefs"
   ></ag-grid-angular>
 
