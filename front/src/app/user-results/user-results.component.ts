@@ -33,16 +33,7 @@ export class UserResultsComponent implements OnInit {
 
   rowData: any;
 
-  multi: any[] = [
-    {
-      name: "Individual",
-      series:[]
-    },
-    {
-      name: "Club",
-      series:[]
-    }
-  ];
+  multi: any[];
 
   view: any[] = [700, 400];
 
@@ -69,6 +60,16 @@ export class UserResultsComponent implements OnInit {
               private exService: ExerciseService,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.userId = params.cardNumber);
+    this.multi = [
+      {
+        name: "Individual",
+        series: []
+      },
+      {
+        name: "Club",
+        series: []
+      }
+    ];
   }
 
   ngOnInit() {
@@ -79,34 +80,54 @@ export class UserResultsComponent implements OnInit {
     this.displayGraphData();
   }
 
+
+
   filterData() {
     this.loadResults();
   }
-  
+
   onAddResultClick() {
     let dialogRef = this.dialog.open(EnterResultsComponent,  {
       width: '90%',
       data: { }
     });
-    
+
     dialogRef.afterClosed().subscribe((result) => {
       this.loadResults();
     });
   }
 
-  displayGraphData() {
-    return this.rest.getUserResults(this.userId).subscribe((results) => {
-      console.log(results);
-      this.results.forEach((elememt) => {
-        this.multi.push({"name": elememt.trainingDate, "value": elememt.workoutResult});
-      })
-    })
+  private displayGraphData() {
+    this.rest.getUserResults(this.userId).subscribe((results) => {
+      const names = Object.getOwnPropertyNames(results);
+      const tD = [];
+      const wR = [];
+      for (let i = 0; i < names.length - 1; i++) {
+        tD.push(results[i].trainingDate);
+        wR.push(results[i].workoutResult);
+        console.log(tD);
+      }
+
+      tD.sort();
+
+      for (let i = 0; i < tD.length - 1; i++) {
+         this.multi[0].series.push({
+           name: tD[i],
+            value: wR[i]
+          });
+
+         this.multi = [...this.multi];
+
+        }
+    });
+
+  console.log(this.multi);
   };
 
   onSelect(event) {
     console.log(event);
   }
-  
+
   private loadResults() {
     return this.rest.getUserResults(this.userId, {
       exerciseId: this.exerciseItem && this.exerciseItem._id,
@@ -116,13 +137,14 @@ export class UserResultsComponent implements OnInit {
       this.rowData = mappedResults;
     });
   }
-  
+
+
   private mapResults(results) {
     return map(results, (result) => {
       const exercise = first(filter(this.exercises, (exercese) => {
         return exercese._id === result.exerciseId;
       }));
-      
+
       if (!isNil(exercise)) {
         result.exercise = {};
         assign(result.exercise, exercise);
