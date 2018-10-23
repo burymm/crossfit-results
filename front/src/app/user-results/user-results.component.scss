@@ -14,6 +14,19 @@
   color: white;
 }
 
-.chart {
-  margin: 10%;
+.line-chart {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+  width: 90%;
+  min-width: 320px;
+  min-height: 300px;
 }
+
+//white color for numbers and words in chart
+::ng-deep .ngx-charts {
+  text{
+    fill: #fff!important;
+  }
+}
+

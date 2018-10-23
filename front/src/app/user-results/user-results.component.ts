@@ -35,7 +35,7 @@ export class UserResultsComponent implements OnInit {
 
   multi: any[];
 
-  view: any[] = [700, 400];
+  view: any[] = [1200, 300];
 
   // options
   showXAxis = true;
@@ -105,7 +105,6 @@ export class UserResultsComponent implements OnInit {
       for (let i = 0; i < names.length - 1; i++) {
         tD.push(results[i].trainingDate);
         wR.push(results[i].workoutResult);
-        console.log(tD);
       }
 
       tD.sort();
@@ -121,8 +120,8 @@ export class UserResultsComponent implements OnInit {
         }
     });
 
-  console.log(this.multi);
   };
+
 
   onSelect(event) {
     console.log(event);
