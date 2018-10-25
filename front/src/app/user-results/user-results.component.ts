@@ -35,20 +35,18 @@ export class UserResultsComponent implements OnInit {
 
   multi: any[];
 
-  view: any[] = [1200, 300];
-
-  // options
+  //options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
-  showLegend = true;
+  showLegend = false;
   showXAxisLabel = true;
   xAxisLabel = 'Date';
   showYAxisLabel = true;
   yAxisLabel = 'Result';
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#AAAAAA']
+    domain: ['#5AA454', '#f57c00', '#AAAAAA']
   };
 
   // line, area
@@ -121,6 +119,7 @@ export class UserResultsComponent implements OnInit {
     });
 
   };
+
 
 
   onSelect(event) {

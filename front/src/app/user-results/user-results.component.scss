@@ -1,3 +1,7 @@
+.content {
+  margin: 5%;
+}
+
 .table-results {
   margin: 3% auto;
   width: 90%;
@@ -16,17 +20,32 @@
 
 .line-chart {
   display: flex;
-  justify-content: center;
-  margin: 5%;
+  justify-content: left;
+  overflow: hidden;
   width: 90%;
-  min-width: 320px;
+  min-width: 300px;
   min-height: 300px;
 }
 
 //white color for numbers and words in chart
 ::ng-deep .ngx-charts {
-  text{
+  text {
     fill: #fff!important;
   }
 }
 
+.label {
+  font-size: 9px;
+  font-weight: 500;
+  padding: 8px 3px;
+  margin-left: 5%;
+  text-transform: uppercase;
+}
+
+.individual-color {
+  background-color: #5AA454;
+}
+
+.club-color {
+  background-color: #f57c00;
+}

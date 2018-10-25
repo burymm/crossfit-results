@@ -1,8 +1,11 @@
 @import "~app/theme/theme";
 
 .header {
-  background: url('../../../assets/img/header.png') 0 0 no-repeat;
-  min-height: 720px;
+  background-image: url('../../../assets/img/header.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0 0 20%;
+  min-height: 150px;
   background-size: cover;
 }
 

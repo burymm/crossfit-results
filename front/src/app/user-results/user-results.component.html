@@ -29,20 +29,26 @@
   ></ag-grid-angular>
 
   <div class="line-chart">
-  <ngx-charts-line-chart
-    [scheme]="colorScheme"
-    [results]="multi"
-    [gradient]="gradient"
-    [xAxis]="showXAxis"
-    [yAxis]="showYAxis"
-    [legend]="showLegend"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
-    [autoScale]="autoScale"
-    (select)="onSelect($event)">
-  </ngx-charts-line-chart>
+    <ngx-charts-line-chart
+      [scheme]="colorScheme"
+      [results]="multi"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [autoScale]="autoScale"
+      (select)="onSelect($event)">
+    </ngx-charts-line-chart>
+  </div>
+  <div class="custom-chart-legend">
+    <span class="label individual-color">&nbsp;</span>
+      <span class="legend-label-text">Individual</span>
+    <span class="label club-color">&nbsp;</span>
+      <span class="legend-label-text"> Club </span>
   </div>
 </div> <!-- end content -->
 
